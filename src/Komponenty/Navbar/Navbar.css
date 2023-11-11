@@ -1,0 +1,95 @@
+#navLogo{
+    border-bottom: 1px solid #e3dbe0;
+}
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    mix-blend-mode: multiply;
+}
+.navbar-nav.ml-auto {
+    margin-right: 10px;
+}
+.navbar-nav.ml-auto a {
+    margin-right: 20px;
+}
+.navbar-nav.ml-auto a:hover{
+    transition: transform 0.2s;
+}
+.navbar-nav.ml-auto a:hover {
+    transform: scale(1.1);
+}
+.navbar-nav.mr-auto a:hover{
+    color: black;
+}
+
+/* menu */
+
+#navbar-nav.ml-auto{
+    display: inline-block;
+    margin-left: 0;
+    z-index: 2;
+    background-color: hsl(0, 51%, 45%);
+}
+#navbarDropdownVýpredaj{
+    color: red;
+}
+
+@media (min-width: 992px) {
+    .dropdown:nth-child(1) {
+        margin-left: 10px;
+    }
+}
+
+.carousel-item img {
+    object-fit: cover;
+    object-position: center;
+    height: 50vh;
+    overflow: hidden;
+}
+
+
+.dopln{
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.nav-bag{
+    width: 22px;
+    height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -40px;
+    margin-left: 40px;
+    border-radius: 11px;
+    font-size: 14;
+    background-color: rgb(167, 101, 101);
+    color: white;
+}
+#volba{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin-left: -35px;
+    gap: 15px;
+    
+}
+@media(max-width: 982px){
+#volba{
+    display: block;
+    align-items: center;
+    list-style: none;
+    margin-left: -35px;
+    gap: 15px;
+    
+}
+}
+
+#volba li{
+    display: block;
+    justify-content: space-between;
+    margin-left: 15px;
+}
+
+
