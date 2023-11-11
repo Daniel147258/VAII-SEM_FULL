@@ -21,4 +21,9 @@
     background-color: black;
     margin-top: 18px;
   }
+
+  #zlava:hover{
+    background-color: rgb(232, 191, 191);
+    color: black;
+  }
   
