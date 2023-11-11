@@ -1,14 +1,11 @@
 
 import './App.css';
-import PomocnyNavBar from './Komponenty/PomocnyNavBar/PomocnyNavBar';
-import Navbar from './Komponenty/Navbar/Navbar';
+import Uvodna from './Strany/Uvodna/Uvodna';
 
 function App() {
   return (
     <div>
-    <PomocnyNavBar/>
-     <Navbar/>
-
+      <Uvodna/>
     </div>
   );
 }

@@ -1,0 +1,28 @@
+#navbar-nav.ml-auto{
+    display: inline-block;
+    margin-left: 0;
+    z-index: 2;
+    background-color: hsl(0, 51%, 45%);
+}
+#navbarDropdownVýpredaj{
+    color: red;
+}
+
+@media (min-width: 992px) {
+    .dropdown:nth-child(1) {
+        margin-left: 10px;
+    }
+}
+
+.carousel-item img {
+    object-fit: cover;
+    object-position: center;
+    height: 50vh;
+    overflow: hidden;
+}
+
+
+.dopln{
+    font-size: 50px;
+    font-weight: bold;
+}

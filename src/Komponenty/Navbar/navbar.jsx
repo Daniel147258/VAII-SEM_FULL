@@ -15,9 +15,18 @@ const Navbar = () => {
         {/*Lava cast*/}
         <div class="navbar-nav mr-auto">
           <ul class="mr-auto" id='volba'>
-            <li class="nav-link" onClick={()=>{nastav("Zeny")}}>Ženy{menu==="Zeny"?<hr style={{ color: 'red',borderWidth: '2px'}}/>:<></>}</li>
-            <li class="nav-link" onClick={()=>{nastav("Muzi")}}>Muži{menu==="Muzi"?<hr style={{ color: 'red',borderWidth: '2px'}}/>:<></>}</li>
-            <li class="nav-link" onClick={()=>{nastav("Deti")}}>Deti{menu==="Deti"?<hr style={{ color: 'red',borderWidth: '2px'}}/>:<></>}</li>
+          <li className="nav-link" onClick={() => { nastav("Zeny") }}>
+            <span style={{ fontWeight: menu === "Zeny" ? 'bold' : 'normal' }}>Ženy</span>
+            {menu === "Zeny" ? <hr style={{ color: 'red', borderWidth: '2px', fontWeight: 'bold' }} /> : <></>}
+          </li>
+            <li class="nav-link" onClick={()=>{nastav("Muzi")}}>
+              <span style={{ fontWeight: menu === "Muzi" ? 'bold' : 'normal' }}>Muži</span>
+            {menu==="Muzi"?<hr style={{ color: 'red',borderWidth: '2px'}}/>:<></>}
+          </li>
+            <li class="nav-link" onClick={()=>{nastav("Deti")}}>
+              <span style={{ fontWeight: menu === "Deti" ? 'bolder' : 'normal' }} >Deti</span>
+              {menu==="Deti"?<hr style={{ color: 'red',borderWidth: '2px'}}/>:<></>}
+          </li>
             </ul>
         </div>
 
