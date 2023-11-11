@@ -1,0 +1,24 @@
+  
+  .text-with-background {
+    background-image: url('../../Subory/images/exclusive.jpg');
+    background-size: cover; 
+    background-position: center;
+    color: white; 
+    padding: 100px; 
+    width: 100%;
+  }
+  
+  .text-with-background h1 {
+    font-size: 24px;
+    margin: 0; 
+    width: 100%;
+    margin-left: -50px;
+  }
+
+  #zlava{
+    margin-left: -50px;
+    border: none;
+    background-color: black;
+    margin-top: 18px;
+  }
+  

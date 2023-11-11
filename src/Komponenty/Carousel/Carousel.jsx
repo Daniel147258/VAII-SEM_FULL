@@ -1,5 +1,5 @@
 import React from 'react'
-import obrazok1 from '../../Subory/images/opa.jpg'
+import obrazok1 from '../../Subory/images/style2.avif'
 import obrazok2 from '../../Subory/images/style.avif'
 import obrazok3 from '../../Subory/images/style2.avif'
 import './Carousel.css'
