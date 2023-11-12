@@ -4,7 +4,7 @@ import logo from '../../Subory/images/logo.jpg';
 import bag from '../../Subory/images/bag.svg';
 import heart from '../../Subory/images/heart.png';
 import login from '../../Subory/images/login.png';
-
+import { Link } from 'react-router-dom';
 const Navbar = () => {
 
   const[menu, nastav] = useState(null);
@@ -16,15 +16,18 @@ const Navbar = () => {
         <div class="navbar-nav mr-auto">
           <ul class="mr-auto" id='volba'>
           <li className="nav-link" onClick={() => { nastav("Zeny") }}>
-            <span style={{ fontWeight: menu === "Zeny" ? 'bold' : 'normal' }}>Ženy</span>
+            <span className='lop' style={{ fontWeight: menu === "Zeny" ? 'bold' : 'normal' }}>
+              <Link to='/zeny' style={{ textDecoration: 'none', color: 'inherit'  }}>Ženy</Link></span>
             {menu === "Zeny" ? <hr style={{ color: 'red', borderWidth: '2px', fontWeight: 'bold' }} /> : <></>}
           </li>
             <li class="nav-link" onClick={()=>{nastav("Muzi")}}>
-              <span style={{ fontWeight: menu === "Muzi" ? 'bold' : 'normal' }}>Muži</span>
+              <span className='lop'style={{ fontWeight: menu === "Muzi" ? 'bold' : 'normal' }}>
+                <Link to='/muzi' style={{ textDecoration: 'none', color: 'inherit'  }}>Muži</Link></span>
             {menu==="Muzi"?<hr style={{ color: 'red',borderWidth: '2px'}}/>:<></>}
           </li>
             <li class="nav-link" onClick={()=>{nastav("Deti")}}>
-              <span style={{ fontWeight: menu === "Deti" ? 'bolder' : 'normal' }} >Deti</span>
+              <span className='lop' style={{ fontWeight: menu === "Deti" ? 'bolder' : 'normal' }}>
+                <Link to='/deti' style={{ textDecoration: 'none', color: 'inherit'  }}>Deti</Link></span>
               {menu==="Deti"?<hr style={{ color: 'red',borderWidth: '2px'}}/>:<></>}
           </li>
             </ul>
@@ -38,10 +41,10 @@ const Navbar = () => {
         </div>
          {/*Pravobok*/}
         <div class="navbar-nav ml-auto">
-            <a class="nav-link" href="Prihlasenie.html"><img src={login} height="35" alt='login' width="35"></img></a>
-            <a class="nav-link" href="ale2"><img src={heart} id="heart" alt='heart' height="35" width="35"></img></a>
+            <Link class="nav-link" to='/login'><img src={login} height="35" alt='login' width="35"></img></Link>
+            <Link class="nav-link" to='/zoznamOblubenych'><img src={heart} id="heart" alt='heart' height="35" width="35"></img></Link>
             <div className='nav-cart'>
-              <a class="nav-link" href="ale3"><img src={bag} alt="nakup" id="nakup" height="33" width="33"></img></a>
+              <Link class="nav-link" id='nakup' to='/nakup'><img src={bag} alt="nakup" id="nakup" height="33" width="33"></img></Link>
               <div className='nav-bag'>0</div>
             </div>
         </div>

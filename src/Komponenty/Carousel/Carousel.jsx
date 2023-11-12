@@ -14,21 +14,21 @@ const Carousel = () => {
     <div class="carousel-inner">
         <div class="carousel-item active">
             <img src={obrazok1} class="d-block w-100" alt="uvodny"></img>
-            <div class="carousel-caption d-none d-md-block">
+            <div class="carousel-caption  d-md-block">
                 <h5>Jesenné bundy </h5>
                 <p>Kvalitné materiály, najlepšie ceny mnoho dalších výhod</p>
             </div>
         </div>
         <div class="carousel-item">
             <img src={obrazok2} class="d-block w-100" alt="uvodny"></img>
-            <div class="carousel-caption d-none d-md-block">
+            <div class="carousel-caption d-md-block">
                 <h5>Štýl ktorý dostane každého</h5>
                 <p>Vybuduj si svoj vlastný štýl a predveď ho celému svetu</p>
             </div>
         </div>
         <div class="carousel-item">
             <img src={obrazok3} class="d-block w-100" alt="uvodny"></img>
-            <div class="carousel-caption d-none d-md-block">
+            <div class="carousel-caption d-md-block">
                 <h5>Zimné bundy za skvelú cenu</h5>
                 <p>Nakúp za 100€ a doprav dostaneš zadarmo</p>
             </div>
