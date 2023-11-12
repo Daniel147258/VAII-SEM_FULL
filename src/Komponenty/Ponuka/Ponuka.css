@@ -1,6 +1,6 @@
   
   .text-with-background {
-    background-image: url('../../Subory/images/exclusive.jpg');
+    background-image: url('../../Subory/images/exklusive3.jpg');
     background-size: cover; 
     background-position: center;
     color: white; 
@@ -23,7 +23,7 @@
   }
 
   #zlava:hover{
-    background-color: rgb(232, 191, 191);
+    background-color: rgb(240, 236, 236);
     color: black;
   }
   
