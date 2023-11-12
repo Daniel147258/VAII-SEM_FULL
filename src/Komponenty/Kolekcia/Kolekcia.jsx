@@ -11,7 +11,7 @@ const Kolekcia = () => {
     <div className='row'>
       {kolekcie2.map((vec, i) => {
         return (
-          <div key={i} className='col-lg-4 col-md-6 mb-4'>
+          <div key={i} className='col-lg-4 col-md-4 mb-4' id='produkty'>
             <Vec
               id={vec.id}
               name={vec.name}

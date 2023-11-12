@@ -7,7 +7,7 @@ import login from '../../Subory/images/login.png';
 
 const Navbar = () => {
 
-  const[menu, nastav] = useState("Zeny");
+  const[menu, nastav] = useState(null);
 
   return (
     <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navLogo">

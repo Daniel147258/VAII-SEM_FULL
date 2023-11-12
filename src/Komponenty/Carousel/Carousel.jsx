@@ -15,7 +15,7 @@ const Carousel = () => {
         <div class="carousel-item active">
             <img src={obrazok1} class="d-block w-100" alt="uvodny"></img>
             <div class="carousel-caption d-none d-md-block">
-                <h5>Jesené bundy </h5>
+                <h5>Jesenné bundy </h5>
                 <p>Kvalitné materiály, najlepšie ceny mnoho dalších výhod</p>
             </div>
         </div>
