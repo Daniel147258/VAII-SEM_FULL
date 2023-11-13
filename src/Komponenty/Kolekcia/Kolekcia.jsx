@@ -1,30 +1,16 @@
-import React from 'react'
-import './Kolekcia.css'
-import kolekcie2 from '../Assets/new_collections'
-import Vec from '../Vec/Vec'
+import React from 'react';
+import './Kolekcia.css';
+import noveKolekcie from '../Assets/new_collections';
+import SimpleSlider from '../SimpleSlider/SimpleSlider'; 
+
 const Kolekcia = () => {
   return (
     <div className='container kolekcia-container'>
-    <h1 className='text-center'>Produkty</h1>
-    <hr />
-
-    <div className='row'>
-      {kolekcie2.map((vec, i) => {
-        return (
-          <div key={i} className='col-lg-4 col-md-6 mb-6' id='produkty'>
-            <Vec
-              id={vec.id}
-              name={vec.name}
-              image={vec.image}
-              new_price={vec.new_price}
-              old_price={vec.old_price}
-            />
-          </div>
-        );
-      })}
+      <h1 className='text-center'>Produkty</h1>
+      <hr />
+      <SimpleSlider veci={noveKolekcie} />
     </div>
-  </div>
-  )
-}
+  );
+};
 
-export default Kolekcia
+export default Kolekcia;

@@ -1,0 +1,44 @@
+.slick-prev,
+.slick-next{
+  font-size: 0;
+  color: transparent;
+  background-color: rgb(3, 3, 3);
+  width: 25px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: calc(50% - 48px); 
+  z-index: 1;
+  cursor: pointer;
+}
+
+.slick-prev:hover,
+.slick-next:hover {
+  font-size: 0;
+  color: transparent;
+  background-color: rgb(162, 154, 154);
+  width: 25px;
+  height: 380px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: calc(50% - 48px); 
+  z-index: 1;
+  cursor: pointer;
+}
+
+.slick-slider{
+  margin-bottom: 50px;
+  margin-left: 50px;
+}
+
+@media(max-width: 768px){
+  .slick-next{
+    right: 0;
+  }
+}
+
+
+
+

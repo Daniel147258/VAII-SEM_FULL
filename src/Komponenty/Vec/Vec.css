@@ -23,7 +23,8 @@
     transition: 0.6s;
 }
 
-.vec img {
-    min-width: 100%;
+.vec img{
+    max-height: 5%;
     height: auto; 
 }
+
