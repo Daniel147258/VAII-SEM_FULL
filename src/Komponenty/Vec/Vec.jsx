@@ -4,18 +4,25 @@ import { Link } from 'react-router-dom'
 
 const Vec = (props) => {
   return (
-    <div className='vec'>
-        <img src={props.image} alt="" />
-        <p>{props.name}</p>
-      <div className="cena">
-        <div className="novaCena">
-            ${props.new_price}
+    <div class="container">
+    <div class="row">
+        <div>
+            <div class='vec'>
+                <img src={props.image} alt="" class="img-fluid" />
+                <p>{props.name}</p>
+                <div class="cena">
+                    <div class="novaCena">
+                        ${props.new_price}
+                    </div>
+                    <div class="staraCena">
+                        ${props.old_price}
+                    </div>
+                </div>
+            </div>
         </div>
-        <div className="staraCena">
-            ${props.old_price}
-        </div>
-      </div>
     </div>
+</div>
+
   )
 }
 
