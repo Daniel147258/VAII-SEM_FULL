@@ -39,6 +39,7 @@ const SimpleSlider = ({ veci }) => {
               image={vec.image}
               new_price={vec.new_price}
               old_price={vec.old_price}
+              
           />
           </div>
         ))}

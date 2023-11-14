@@ -1,6 +1,6 @@
 import React from 'react'
 import './Vec.css'
-import { Link } from 'react-router-dom'
+
 
 const Vec = (props) => {
   return (

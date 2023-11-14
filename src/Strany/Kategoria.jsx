@@ -1,8 +1,10 @@
 import React from 'react'
-
-const Kategoria = () => {
+import Nakupovanie from '../Komponenty/Nakupovanie/Nakupovanie'
+const Kategoria = (props) => {
   return (
-    <div>Kategoria</div>
+    <div>
+      <Nakupovanie {...props}/>
+    </div>
   )
 }
 

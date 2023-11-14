@@ -1,6 +1,8 @@
 
 import './App.css';
 import Navbar from './Komponenty/Navbar/Navbar';
+import PomocnyNavBar from './Komponenty/PomocnyNavBar/PomocnyNavBar'
+import Menu from './Komponenty/Menu/Menu'
 import Uvodna from './Strany/Uvodna/Uvodna';
 import { BrowserRouter,Routes,Route } from 'react-router-dom'; 
 import Kategoria from './Strany/Kategoria';
@@ -13,11 +15,14 @@ function App() {
   return (
     <div>
       <BrowserRouter>
+        <PomocnyNavBar/>
+        <Navbar/>
+        <Menu/>
           <Routes>   
             <Route path='/' element={<Uvodna/>}></Route>
-            <Route path='/zeny' element={<Kategoria kategoria="zeny"/>}></Route>
-            <Route path='/muzi' element={<Kategoria kategoria="muzi"/>}></Route>
-            <Route path='/deti' element={<Kategoria kategoria="deti"/>}></Route>
+            <Route path='/zeny' element={<Kategoria category="women" />}></Route>
+            <Route path='/muzi' element={<Kategoria category="men"/>}></Route>
+            <Route path='/deti' element={<Kategoria category="kid"/>}></Route>
             <Route path="produkt" element={<Produkt/>}>
               <Route path=':produktId' element={<Produkt></Produkt>}></Route>
             </Route>

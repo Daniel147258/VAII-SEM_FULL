@@ -3,9 +3,9 @@ import all_product from '../Komponenty/Assets/all_product'
 
 export const Kontext = createContext(null);
 
-const ContextProvider = (props) =>{
+const KontextProvider = (props) => {
 
-    const kontextHodnota = {all_product} // vsetk produkty ;
+    const kontextHodnota = {all_product}; // vsetky produkty ;
 
     return (
         <Kontext.Provider value={kontextHodnota}>
@@ -14,4 +14,4 @@ const ContextProvider = (props) =>{
     )
 }
 
-export default ContextProvider;
+export default KontextProvider;
