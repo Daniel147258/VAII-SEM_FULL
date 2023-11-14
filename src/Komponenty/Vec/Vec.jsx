@@ -12,10 +12,10 @@ const Vec = (props) => {
                 <p>{props.name}</p>
                 <div class="cena">
                     <div class="novaCena">
-                        ${props.new_price}
+                        €{props.new_price}
                     </div>
                     <div class="staraCena">
-                        ${props.old_price}
+                        €{props.old_price}
                     </div>
                 </div>
             </div>

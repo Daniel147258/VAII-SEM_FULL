@@ -1,7 +1,9 @@
 import React from 'react'
 import './Footer.css'
+
 const Footer = () => {
   return (
+    <div>
         <footer class="text-center text-white" id="footer">
         <div classname="container p-4">
             <section class="mb-4">
@@ -136,6 +138,7 @@ const Footer = () => {
             <a className="text-white" href="#"> Daniel Dziaba</a>
         </div>
         </footer>
+        </div>
   )
 }
 

@@ -21,8 +21,8 @@ function App() {
             <Route path="produkt" element={<Produkt/>}>
               <Route path=':produktId' element={<Produkt></Produkt>}></Route>
             </Route>
-            <Route path='/login' element={<Login/>}></Route>
             <Route path='/zoznamOblubenych' element={<ZoznamOblubenych/>}></Route>
+            <Route path='/login' element={<Login/>}></Route>
             <Route path='/nakup' element={<Nakup></Nakup>}/>
           </Routes>
       </BrowserRouter>

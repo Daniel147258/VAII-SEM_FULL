@@ -1,0 +1,11 @@
+.btn-block{
+    margin-top: 15px;
+    height: auto;
+    font-size: 15px;
+    background-color: #cb6a6a;
+    border: none;
+}
+
+#logo{
+    mix-blend-mode: multiply;
+}
