@@ -5,8 +5,10 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Kontext from './Kontext/Kontext';
 import { GlobalProvider } from './Kontext/GlobalContext';
+import { BreadcrumbProvider } from './Kontext/BreadcrumbContext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  <BreadcrumbProvider>
   <Kontext>
     <GlobalProvider>
       <React.StrictMode>
@@ -14,6 +16,8 @@ root.render(
       </React.StrictMode>
     </GlobalProvider>
   </Kontext>
+  </BreadcrumbProvider>
+  
   
 );
 

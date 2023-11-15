@@ -10,7 +10,7 @@ import Produkt from './Strany/Produkt';
 import ZoznamOblubenych from './Strany/ZoznamOblubenych';
 import Nakup from './Strany/Nakup';
 import Login from './Strany/Login';
-
+import Breadcrumb from './Komponenty/Breadcrumb/Breadcrumb';
 function App() {
   return (
     <div>
@@ -20,11 +20,11 @@ function App() {
         <Menu/>
           <Routes>   
             <Route path='/' element={<Uvodna/>}></Route>
-            <Route path='/zeny' element={<Kategoria category="women" />}></Route>
-            <Route path='/muzi' element={<Kategoria category="men"/>}></Route>
-            <Route path='/deti' element={<Kategoria category="kid"/>}></Route>
-            <Route path="produkt" element={<Produkt/>}>
-              <Route path=':produktId' element={<Produkt></Produkt>}></Route>
+            <Route path='/women' element={<Kategoria category="women" />}></Route>
+            <Route path='/men' element={<Kategoria category="men"/>}></Route>
+            <Route path='/kid' element={<Kategoria category="kid"/>}></Route>
+            <Route path=":category/" element={<Produkt/>}>
+              <Route path=':name' element={<Produkt></Produkt>}></Route>
             </Route>
             <Route path='/zoznamOblubenych' element={<ZoznamOblubenych/>}></Route>
             <Route path='/login' element={<Login/>}></Route>

@@ -44,6 +44,7 @@ const Nakupovanie = (props) => {
                     <Vec
                       key={i}
                       id={vec.id}
+                      category={vec.category}
                       name={vec.name}
                       image={vec.image}
                       new_price={vec.new_price}
