@@ -4,6 +4,7 @@ import logo from '../../Subory/images/logo.jpg';
 import bag from '../../Subory/images/bag.svg';
 import heart from '../../Subory/images/heart.png';
 import login from '../../Subory/images/login.png';
+import house from '../../Subory/images/house.svg';
 import { Link, useLocation } from 'react-router-dom';
 import { GlobalContext } from '../../Kontext/GlobalContext';
 
@@ -62,6 +63,9 @@ const Navbar = () => {
 
         {/* Pravobok */}
         <div className="navbar-nav ml-auto">
+          {lokacia.pathname !== '/' &&(
+            <Link className='nav-link' to='/'><img src={house} height="35" width="35" alt="" /></Link>
+          )}
           <Link className="nav-link" to='/login'><img src={login} height="35" alt='login' width="35"></img></Link>
           <Link className="nav-link" to='/zoznamOblubenych'><img src={heart} id="heart" alt='heart' height="35" width="35"></img></Link>
           <div className='nav-cart'>

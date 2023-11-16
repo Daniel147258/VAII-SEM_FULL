@@ -1,38 +1,68 @@
-import React, { useContext } from 'react';
+import React, { useState } from 'react';
 import './ProductDisplay.css';
 import star_icon from "../Assets/star_icon.png";
 import star_dull_icon from "../Assets/star_dull_icon.png";
 
 const ProductDisplay = (props) => {
   const { product } = props;
+  const [selectedImage, setSelectedImage] = useState(product.image);
+  const [selectedSize, setSelectedSize] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
 
-  if (!product) {
-    return <p>Produkt nie je k dispozícii.</p>;
+  const handleThumbnailClick = (image) => {
+    setSelectedImage(image);
+  };
+
+
+  const handleSizeClick = (size) => {
+    setSelectedSize(size);
+    controlSelectedSize(size);
+  };
+
+  
+    const controlSelectedSize = (size) => {
+    if (size === null){ 
+        setErrorMessage('Zvolte veľkosť produktu!');
+    }
+    else{
+      setErrorMessage(null);
+    }
+  };
+  
+  const handleAddCart = () => {
+    if(selectedSize === null){
+      setErrorMessage('Zvolte veľkosť produktu!');
+    }
   }
+  const sizeButtons = document.querySelectorAll('.size-button');
+  sizeButtons.forEach(button => {
+    button.classList.remove('selected');
+    if (button.id === selectedSize) {
+      button.classList.add('selected')
+    }
+  });
 
   return (
-    <div className='container mt-4'>
+    <div className='container' id='block'>
       <div className='row'>
         <div className='col-md-6'>
           <div className='productdisplay-img'>
-            <img className='productdisplay-main-img img-fluid' src={product.image} alt="" />
+            <img className='productdisplay-main-img img-fluid' src={selectedImage} alt="" />
+          </div>
+          <div className='row'>
+          {(Array.isArray(product.image) ? product.image : [product.image]).map((thumbnail, index) => (
+              <div className='col-md-3'>
+              <img
+                src={product.image}
+                alt=""
+                className={`img-fluid ${selectedImage === product.image ? 'selected' : ''}`}
+                onClick={() => handleThumbnailClick(product.image)}
+              />
+            </div>
+            ))}
           </div>
         </div>
         <div className='col-md-6'>
-          <div className='row'>
-            <div className='col-md-3'>
-              <img src={product.image} alt="" className='img-fluid' />
-            </div>
-            <div className='col-md-3'>
-              <img src={product.image} alt="" className='img-fluid' />
-            </div>
-            <div className='col-md-3'>
-              <img src={product.image} alt="" className='img-fluid' />
-            </div>
-            <div className='col-md-3'>
-              <img src={product.image} alt="" className='img-fluid' />
-            </div>
-          </div>
           <div className='productdisplay-right'>
             <h1>{product.name}</h1>
             <div className='productdisplay-right-stars'>
@@ -44,24 +74,32 @@ const ProductDisplay = (props) => {
               <p>(122)</p>
             </div>
             <div className='productdisplay-right-prices'>
-              <div className='productdisplay-right-price-old'>${product.old_price}</div>
-              <div className='productdisplay-right-price-new'>${product.new_price}</div>
+              <div className='productdisplay-right-price-old'>€{product.old_price}</div>
+              <div className='productdisplay-right-price-new'>€{product.new_price}</div>
             </div>
             <div className='productdisplay-right-description'>
-              A lightweight, usually knitted, pullover shirt, close-fitting and with
-              a round neckline and short sleeves, worn as an undershirt or outer
-              garment.
+              {product.description}
             </div>
             <div className='productdisplay-right-size'>
-              <h1>Zvol Velkost</h1>
+              <h1>Zvolte Velkost</h1>
               <div className='productdisplay-right-sizes'>
-                <div>S</div>
-                <div>M</div>
-                <div>L</div>
-                <div>XL</div>
-                <div>XXL</div>
+              {['XS', 'S', 'M', 'L', 'XL'].map((size, index) => (
+               <button
+               key={index}
+               id={size}
+               className={`size-button ${selectedSize === size ? 'selected' : ''}`}
+               onClick={() => {
+                handleSizeClick(size)
+              }}
+             >
+               {size}
+             </button>
+              ))}
               </div>
-              <button className='btn btn-primary mt-3'>Pridaj do kosika</button>
+              {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+              <button className='btn btn-primary mt-3' onClick={handleAddCart}>
+                Pridaj do kosika
+              </button>
             </div>
           </div>
         </div>
