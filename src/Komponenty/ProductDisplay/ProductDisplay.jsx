@@ -3,7 +3,6 @@ import './ProductDisplay.css';
 import star_icon from "../Assets/star_icon.png";
 import star_dull_icon from "../Assets/star_dull_icon.png";
 
-
 const ProductDisplay = (props) => {
   const { product } = props;
 

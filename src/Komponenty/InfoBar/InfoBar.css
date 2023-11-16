@@ -1,0 +1,42 @@
+#info{
+    background-color:black;
+    height: 3vh;
+    display: flex;
+}
+#info2{
+    background-color: black;
+}
+@media (min-width: 992px) {
+    .navbar-nav.ml-auto {
+        display: flex;
+        margin-left: 35px;
+        align-items: center;
+    }
+}
+@media (min-width: 992px) {
+    .navbar-nav.mx-auto {
+        display: flex;
+        margin-left: 35px;
+        align-items: center;
+    }
+}
+@media (min-width: 992px) {
+    .navbar-nav.mr-auto {
+        display: flex;
+        margin-right: 95px;
+        align-items: center;
+    }
+}
+.nav-link2{
+    color: #ffffff;
+}
+#truck {
+    margin-right: 15px;
+}
+
+#payIcon{
+    margin-right: 15px;
+}
+#change{
+    margin-right: 15px;
+}

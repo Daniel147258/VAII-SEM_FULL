@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import Breadcrumb from '../Komponenty/Breadcrumb/Breadcrumb';
 import { useBreadcrumb } from '../Kontext/BreadcrumbContext';
 import ProductDisplay from '../Komponenty/ProductDisplay/ProductDisplay';
-
+import InfoBar from '../Komponenty/InfoBar/InfoBar';
 const Produkt = () => {
   
   const { all_product } = useContext(Kontext);
@@ -20,6 +20,7 @@ const Produkt = () => {
   }, []);
   return (
     <div>
+        <InfoBar/>
         <Breadcrumb product={product}/>
         <ProductDisplay product={product} />
     </div>
