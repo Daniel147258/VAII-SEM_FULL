@@ -22,8 +22,7 @@ function App() {
             <Route path='/women' element={<Kategoria category="women" />}></Route>
             <Route path='/men' element={<Kategoria category="men"/>}></Route>
             <Route path='/kid' element={<Kategoria category="kid"/>}></Route>
-            <Route path=":category/" element={<Produkt/>}>
-              <Route path=':name' element={<Produkt></Produkt>}></Route>
+            <Route path=":category/:productId" element={<Produkt/>}>
             </Route>
             <Route path='/zoznamOblubenych' element={<ZoznamOblubenych/>}></Route>
             <Route path='/login' element={<Login/>}></Route>
