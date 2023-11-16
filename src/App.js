@@ -10,7 +10,6 @@ import Produkt from './Strany/Produkt';
 import ZoznamOblubenych from './Strany/ZoznamOblubenych';
 import Nakup from './Strany/Nakup';
 import Login from './Strany/Login';
-import Breadcrumb from './Komponenty/Breadcrumb/Breadcrumb';
 function App() {
   return (
     <div>

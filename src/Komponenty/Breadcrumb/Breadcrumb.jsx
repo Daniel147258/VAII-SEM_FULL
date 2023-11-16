@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useBreadcrumb } from '../../Kontext/BreadcrumbContext';
-
+import './Breadcrumb.css'
 const Breadcrumb = (props) => {
   const { product } = props;
   const { addBreadcrumb, breadcrumbs, clearBreadcrumbs } = useBreadcrumb();
@@ -25,11 +25,11 @@ const Breadcrumb = (props) => {
 
   return (
     <div>
-      <Link style={{ textDecoration: 'none', color: 'grey'}} to='/'>Domov</Link>
+      <Link to='/' id='link'>Domov</Link>
       <span>{' > '}</span>
       {breadcrumbs.map((path, index) => (
         <span key={index}>
-          <Link to={path} style={{ textDecoration: 'none', color: 'grey' }}onClick={() => handleBreadcrumbClick(index)}>
+          <Link to={path} id='link' onClick={() => handleBreadcrumbClick(index)}>
             {path.split('/').pop()} {/* Display the last part of the path */}
           </Link>
           {index < breadcrumbs.length - 1 && ' > '}
