@@ -3,7 +3,7 @@ import './Nakupovanie.css';
 import { Kontext } from '../../Kontext/Kontext';
 import Vec from '../Vec/Vec';
 import FiltreSideBar from '../FiltreSideBar/FiltreSideBar';
-
+import Footer from '../Footer/Footer';
 const Nakupovanie = (props) => {
   const { all_product } = useContext(Kontext);
   const [pocetNajdenychProduktov, nastavPocetNajdenychProduktov] = useState(0);
@@ -21,18 +21,19 @@ const Nakupovanie = (props) => {
   }, [all_product, props.category]);
 
   return (
-    <div className="container mt-5">
+    <div>
+    <div className="container" id='content'>
       <div className="row">
         {/* Bočný panel */}
-        <div className="col-md-3">
+        <div className="col-md-3" id="Sidebar">
           <FiltreSideBar/>
         </div>
 
         {/* Hlavný obsah */}
-        <div className="col-md-9">
+        <div className="col-md-9" >
           <p>
-            <span>Zobrazenie 1-12 </span>
-            z {pocetNajdenychProduktov} možných produktov
+            <span>Zobrazenie 1-</span> {pocetNajdenychProduktov} <span> </span>
+             z {pocetNajdenychProduktov} možných produktov
           </p>
           <div>Triedene podľa</div>
 
@@ -63,6 +64,8 @@ const Nakupovanie = (props) => {
           </div>
         </div>
       </div>
+    </div>
+    <Footer/>
     </div>
   );
 };

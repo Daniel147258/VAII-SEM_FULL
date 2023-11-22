@@ -1,25 +1,46 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './ProductDisplay.css';
-import star_icon from "../Assets/star_icon.png";
-import star_dull_icon from "../Assets/star_dull_icon.png";
+import Breadcrumb from '../Breadcrumb/Breadcrumb';
+import { useBreadcrumb } from '../../Kontext/BreadcrumbContext';
+import SizeDropdown from '../SizeDropdown/Sizedropdown';
 
 const ProductDisplay = (props) => {
   const { product } = props;
   const [selectedImage, setSelectedImage] = useState(product.image);
   const [selectedSize, setSelectedSize] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
+  const [blinking, setBlinking] = useState(false);
+  const sizes = ['XS', 'S', 'M', 'L', 'XL'];
+  const { clearBreadcrumbs } = useBreadcrumb();
+
+  useEffect(() => {
+    return () => {
+      clearBreadcrumbs();
+    };
+  }, []);
 
   const handleThumbnailClick = (image) => {
     setSelectedImage(image);
   };
 
+  const handleClick = () =>{
+    setBlinking(true);
+    setTimeout(() => {
+      setBlinking(false);
+    }, 150); // To je v miliSekundach
+  }
 
   const handleSizeClick = (size) => {
-    setSelectedSize(size);
-    controlSelectedSize(size);
+    if(selectedSize == size){
+      setSelectedSize(null);
+    }
+    else{
+      setSelectedSize(size);
+      controlSelectedSize(size);
+    }
+    
   };
 
-  
     const controlSelectedSize = (size) => {
     if (size === null){ 
         setErrorMessage('Zvolte veľkosť produktu!');
@@ -34,6 +55,7 @@ const ProductDisplay = (props) => {
       setErrorMessage('Zvolte veľkosť produktu!');
     }
   }
+  
   const sizeButtons = document.querySelectorAll('.size-button');
   sizeButtons.forEach(button => {
     button.classList.remove('selected');
@@ -45,7 +67,7 @@ const ProductDisplay = (props) => {
   return (
     <div className='container' id='block'>
       <div className='row'>
-        <div className='col-md-6'>
+        <div className='col-md-6 col-8'>
           <div className='productdisplay-img'>
             <img className='productdisplay-main-img img-fluid' src={selectedImage} alt="" />
           </div>
@@ -62,48 +84,39 @@ const ProductDisplay = (props) => {
             ))}
           </div>
         </div>
-        <div className='col-md-6'>
+        <div className='col-md-6 col-8'>
           <div className='productdisplay-right'>
+            <Breadcrumb product={props}/>
             <h1>{product.name}</h1>
-            <div className='productdisplay-right-stars'>
-              <img src={star_icon} alt="" />
-              <img src={star_icon} alt="" />
-              <img src={star_icon} alt="" />
-              <img src={star_icon} alt="" />
-              <img src={star_dull_icon} alt="" />
-              <p>(122)</p>
+            
+            <div className='col-md-12'>
+              <p className='description'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati vel voluptatibus assumenda sequi doloribus 
+              incidunt magnam doloremque delectus enim quam voluptas excepturi impedit voluptate, deserunt non pariatur saepe id minus.</p>
             </div>
-            <div className='productdisplay-right-prices'>
-              <div className='productdisplay-right-price-old'>€{product.old_price}</div>
-              <div className='productdisplay-right-price-new'>€{product.new_price}</div>
-            </div>
-            <div className='productdisplay-right-description'>
-              {product.description}
-            </div>
-            <div className='productdisplay-right-size'>
-              <h1>Zvolte Velkost</h1>
+            <div className='col-md-8'>
+            <h1 style={{fontSize: '24px'}}>Zvoľ velkosť:</h1>
               <div className='productdisplay-right-sizes'>
-              {['XS', 'S', 'M', 'L', 'XL'].map((size, index) => (
-               <button
-               key={index}
-               id={size}
-               className={`size-button ${selectedSize === size ? 'selected' : ''}`}
-               onClick={() => {
-                handleSizeClick(size)
-              }}
-             >
-               {size}
-             </button>
-              ))}
+              <SizeDropdown sizes={sizes} selectedSize={selectedSize} handleSizeClick={handleSizeClick} /> 
+              {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}  
+              <div className='row'>
+              <div className='container-fluid' id='cena'>
+              <span style={{fontSize: '21px', color: 'black'}}>Aktuálna cena: {product.new_price}€</span>
+              <span style={{fontSize: '21px', color: 'grey', marginLeft: '25px', textDecoration: 'line-through'}}>{product.old_price}€</span>
               </div>
-              {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-              <button className='btn btn-primary mt-3' onClick={handleAddCart}>
-                Pridaj do kosika
-              </button>
+            </div>
+              </div>
+                <button type="button" className={`btn btn-primary btn-square mt-3 col-lg-5 ${blinking ? 'blink' : ''}`} id='addToCart'
+                onClick={() => {
+                  handleAddCart();
+                  handleClick();
+                }}>
+                  Pridať do košíka
+                </button>
             </div>
           </div>
         </div>
       </div>
+      
     </div>
   );
 };

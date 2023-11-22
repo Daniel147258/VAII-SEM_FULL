@@ -1,0 +1,9 @@
+@media(max-width: 980px){
+    #Sidebar{
+        border-top: 2px solid black;
+        margin-top: 90px;
+    }
+    #content{
+        margin-top: 150px;
+    }
+}

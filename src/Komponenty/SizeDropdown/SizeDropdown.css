@@ -1,0 +1,66 @@
+.aleNo{
+    list-style-type: none;
+}
+
+.size-dropdown {
+    position: relative;
+    width: 250px;
+  }
+  
+  .size-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    cursor: pointer;
+  }
+  
+  .arrow {
+    margin-left: 8px;
+  }
+  
+  .size-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 500px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
+  }
+  
+  .size-options li {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .size-options li:last-child {
+    border-bottom: none;
+  }
+
+  .size-button{
+    margin-top: 15px;
+    margin-left: -12px;
+    margin-bottom: 15px;
+  }
+
+.tlacitko{
+    border: none;
+    background-color: white;
+    width: 100%;
+    z-index: 2;
+}
+.selected{
+  background-color: black;
+  color: white;
+  border: none;
+}
+
+  

@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState,useEffect } from 'react';
 import './LoginLook.css';
 import logo from '../../Subory/images/logo.jpg';
 
-const LoginLook = () => {
-  return (
 
+const LoginLook = () => {
+
+  return (
     <div className="bg-dark text-white" style={{ minHeight: '100vh', display: 'flex'}}>
       <div className="container" style={{ marginTop: '50px'}}>
         <div className="row justify-content-center">

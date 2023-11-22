@@ -1,5 +1,6 @@
 
 import './App.css';
+import React from 'react';
 import Navbar from './Komponenty/Navbar/Navbar';
 import PomocnyNavBar from './Komponenty/PomocnyNavBar/PomocnyNavBar'
 import Menu from './Komponenty/Menu/Menu'
@@ -10,13 +11,17 @@ import Produkt from './Strany/Produkt';
 import ZoznamOblubenych from './Strany/ZoznamOblubenych';
 import Nakup from './Strany/Nakup';
 import Login from './Strany/Login';
+
 function App() {
+
   return (
     <div>
       <BrowserRouter>
         <PomocnyNavBar/>
         <Navbar/>
-        <Menu/>
+        
+          <Menu/>
+        
           <Routes>   
             <Route path='/' element={<Uvodna/>}></Route>
             <Route path='/women' element={<Kategoria category="women" />}></Route>
@@ -25,7 +30,7 @@ function App() {
             <Route path=":category/:productId" element={<Produkt/>}>
             </Route>
             <Route path='/zoznamOblubenych' element={<ZoznamOblubenych/>}></Route>
-            <Route path='/login' element={<Login/>}></Route>
+            <Route path='/login' element={<Login />}></Route>
             <Route path='/nakup' element={<Nakup></Nakup>}/>
           </Routes>
       </BrowserRouter>

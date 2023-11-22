@@ -1,8 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { Kontext } from '../Kontext/Kontext'
 import { useParams } from 'react-router-dom';
-import Breadcrumb from '../Komponenty/Breadcrumb/Breadcrumb';
-import { useBreadcrumb } from '../Kontext/BreadcrumbContext';
 import ProductDisplay from '../Komponenty/ProductDisplay/ProductDisplay';
 import InfoBar from '../Komponenty/InfoBar/InfoBar';
 const Produkt = () => {
@@ -12,16 +10,11 @@ const Produkt = () => {
 
   const product = all_product.find((e)=> e.id === Number(productId));
   
-  const { clearBreadcrumbs } = useBreadcrumb();
-  useEffect(() => {
-    return () => {
-      clearBreadcrumbs();
-    };
-  }, []);
+  
   return (
     <div>
         <InfoBar/>
-        <Breadcrumb product={product}/>
+        <hr />
         <ProductDisplay product={product} />
     </div>
   )
