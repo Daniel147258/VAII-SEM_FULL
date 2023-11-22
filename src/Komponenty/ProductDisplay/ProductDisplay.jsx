@@ -122,7 +122,6 @@ const ProductDisplay = (props) => {
       </div>  
     </div>
     <RecenziaBox/>
-    
     <RelevantProducts produkt={product} pocet={5} />
     <Footer/>
     </div>

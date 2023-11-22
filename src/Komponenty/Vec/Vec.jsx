@@ -1,30 +1,56 @@
-import React from 'react'
-import './Vec.css'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react';
+import './Vec.css';
+import { Link } from 'react-router-dom';
+import heart from '../../Subory/images/heart.png';
+import heartFill from '../../Subory/images/heart-fill.png';
 
 const Vec = (props) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const [isOblubene, setOblubene] =  useState(false);
+
+  const heart2 = isOblubene ? heartFill : heart; 
+  
+  const handleIsOblubene = () =>{
+    setOblubene(!isOblubene);
+  }
   return (
-    <div class="container">
-    <div class="row">
+    <div className="container">
+      <div className="row">
         <div>
-            <div class='vec'>
-                <Link to={`/${props.category}/${props.id}`}>
-                    <img src={props.image} alt="" class="img-fluid" /></Link>
-                <p>{props.name}</p>
-                <div class="cena">
-                    <div class="novaCena">
-                        €{props.new_price}
-                    </div>
-                    <div class="staraCena">
-                        €{props.old_price}
-                    </div>
+          <div
+            className={`vec ${isHovered ? 'hovered' : ''}`}
+            onMouseOver={() => setIsHovered(true)}
+            onMouseOut={() => setIsHovered(false)}
+          >
+              {isHovered && (
+                <div className="hoverOverlay">
+                    <button className='addToOblubene' onClick={handleIsOblubene}>
+                        <img className="heartIcon" src={heart2} alt="Heart" height={35} width={35} />
+                    </button>
                 </div>
+              )}
+            <Link to={`/${props.category}/${props.id}`}>
+              <img className="img-fluid" src={props.image} alt="" />
+            </Link>
+            <p>{props.name}</p>
+            <div className="cena">
+              <div className="novaCena">
+                €{props.new_price}
+              </div>
+              <div className="staraCena">
+                €{props.old_price}
+              </div>
             </div>
+            {isHovered && (
+              <div className="">
+                <button className="addToCartButton">Vložiť do košíka</button>
+              </div>
+            )}
+          </div>
         </div>
+      </div>
     </div>
-</div>
+  );
+};
 
-  )
-}
-
-export default Vec
+export default Vec;

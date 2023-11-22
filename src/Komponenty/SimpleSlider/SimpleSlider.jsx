@@ -30,7 +30,7 @@ const SimpleSlider = ({ veci, pocet }) => {
 
   
   return (
-    <div>
+    <div className='slider'>
       <Slider {...settings}>
         {veci && veci.length > 0 && veci.map((vec, i) => {
           if (i < pocet) {
@@ -51,7 +51,7 @@ const SimpleSlider = ({ veci, pocet }) => {
           }
         })}
       </Slider>
-      <hr />
+     
     </div>
   );
 };

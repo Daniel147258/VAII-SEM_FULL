@@ -19,9 +19,7 @@ function App() {
       <BrowserRouter>
         <PomocnyNavBar/>
         <Navbar/>
-        
           <Menu/>
-        
           <Routes>   
             <Route path='/' element={<Uvodna/>}></Route>
             <Route path='/women' element={<Kategoria category="women" />}></Route>
