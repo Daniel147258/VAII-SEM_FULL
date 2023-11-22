@@ -3,6 +3,9 @@ import './ProductDisplay.css';
 import Breadcrumb from '../Breadcrumb/Breadcrumb';
 import { useBreadcrumb } from '../../Kontext/BreadcrumbContext';
 import SizeDropdown from '../SizeDropdown/Sizedropdown';
+import RecenziaBox from '../RecenziaBox/RecenziaBox';
+import Footer from '../Footer/Footer';
+import RelevantProducts from '../RelevantProducts/RelevantProducts';
 
 const ProductDisplay = (props) => {
   const { product } = props;
@@ -65,11 +68,12 @@ const ProductDisplay = (props) => {
   });
 
   return (
+    <div>
     <div className='container' id='block'>
       <div className='row'>
         <div className='col-md-6 col-8'>
           <div className='productdisplay-img'>
-            <img className='productdisplay-main-img img-fluid' src={selectedImage} alt="" />
+            <img className='productdisplay-main-img img-fluid' src={product.image} alt="" />
           </div>
           <div className='row'>
           {(Array.isArray(product.image) ? product.image : [product.image]).map((thumbnail, index) => (
@@ -115,8 +119,12 @@ const ProductDisplay = (props) => {
             </div>
           </div>
         </div>
-      </div>
-      
+      </div>  
+    </div>
+    <RecenziaBox/>
+    
+    <RelevantProducts produkt={product} pocet={5} />
+    <Footer/>
     </div>
   );
 };

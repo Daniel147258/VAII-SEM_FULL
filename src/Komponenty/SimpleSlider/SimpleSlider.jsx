@@ -4,7 +4,7 @@ import Vec from '../Vec/Vec';
 import './SimpleSlider.css'
 
 
-const SimpleSlider = ({ veci }) => {
+const SimpleSlider = ({ veci, pocet }) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -28,21 +28,28 @@ const SimpleSlider = ({ veci }) => {
     ],
   };
 
+  
   return (
     <div>
       <Slider {...settings}>
-        {veci.map((vec, i) => (
-          <div key={i}>
-            <Vec
-              id={vec.id}
-              name={vec.name}
-              image={vec.image}
-              new_price={vec.new_price}
-              old_price={vec.old_price}
-              
-          />
-          </div>
-        ))}
+        {veci && veci.length > 0 && veci.map((vec, i) => {
+          if (i < pocet) {
+            return (
+              <div key={i}>
+                <Vec
+                  id={vec.id}
+                  name={vec.name}
+                  category={vec.category}
+                  image={vec.image}
+                  new_price={vec.new_price}
+                  old_price={vec.old_price}
+                />
+              </div>
+            );
+          } else {
+            return null;
+          }
+        })}
       </Slider>
       <hr />
     </div>

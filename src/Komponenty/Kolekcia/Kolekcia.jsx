@@ -8,7 +8,7 @@ const Kolekcia = () => {
     <div className='container kolekcia-container'>
       <h1 className='text-center'>Produkty</h1>
       <hr />
-      <SimpleSlider veci={noveKolekcie} />
+      <SimpleSlider veci={noveKolekcie} pocet={7} />
     </div>
   );
 };
