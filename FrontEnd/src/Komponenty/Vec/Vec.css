@@ -24,7 +24,7 @@
 .vec:hover {
     transform: scale(1.02);
     transition: 0.5s;
-    border: 12px solid rgb(242, 228, 228); 
+    border: 8px solid rgb(242, 228, 228); 
 }
 
 .vec img {
