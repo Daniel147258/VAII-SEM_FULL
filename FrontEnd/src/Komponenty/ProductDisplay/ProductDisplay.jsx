@@ -6,6 +6,7 @@ import SizeDropdown from '../SizeDropdown/Sizedropdown';
 import RecenziaBox from '../RecenziaBox/RecenziaBox';
 import Footer from '../Footer/Footer';
 import RelevantProducts from '../RelevantProducts/RelevantProducts';
+import { useScrollToTop } from '../../Kontext/ScollToTopContext';
 
 const ProductDisplay = (props) => {
   const { product } = props;
@@ -15,6 +16,12 @@ const ProductDisplay = (props) => {
   const [blinking, setBlinking] = useState(false);
   const sizes = ['XS', 'S', 'M', 'L', 'XL'];
   const { clearBreadcrumbs } = useBreadcrumb();
+  const scrollToTop = useScrollToTop();
+
+  useEffect(() => {
+    
+    scrollToTop();
+  }, [scrollToTop]);
 
   useEffect(() => {
     return () => {
@@ -34,7 +41,7 @@ const ProductDisplay = (props) => {
   }
 
   const handleSizeClick = (size) => {
-    if(selectedSize == size){
+    if(selectedSize === size){
       setSelectedSize(null);
     }
     else{
@@ -66,6 +73,7 @@ const ProductDisplay = (props) => {
       button.classList.add('selected')
     }
   });
+
 
   return (
     <div>

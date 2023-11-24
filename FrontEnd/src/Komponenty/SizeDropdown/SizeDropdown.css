@@ -2,8 +2,13 @@
 .aleNo{
     list-style-type: none;
     width: 100%;
+    margin-left: -15px;
+    padding: 10px;
+    cursor: pointer;
 }
-
+.aleNo:last-child {
+  border-bottom: none;
+}
 .size-dropdown {
     position: relative;
     width: 250px;
@@ -28,29 +33,21 @@
     position: absolute;
     top: 100%;
     left: 0;
-    width: 100%;
-    max-height: 500px;
+    width: 90%;
+    max-height: 180px;
     overflow-y: auto;
     border: 1px solid #ccc;
-    background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    
+    background-color: #eac7c7;
   }
   
-  .size-options li {
-    padding: 10px;
-    cursor: pointer;
-    border-bottom: 1px solid #ccc;
-  }
-  
-  .size-options li:last-child {
-    border-bottom: none;
-  }
+
 
   .size-button{
     margin-top: 15px;
     margin-left: -12px;
     margin-bottom: 15px;
+    
   }
 
 .tlacitko{
@@ -58,10 +55,24 @@
     background-color: white;
     width: 100%;
     z-index: 2;
+    border: none;
+    border-radius: 10px;
+    color: rgb(143, 141, 141);
 }
+
+.tlacitko:hover{
+  border: none;
+  background-color: rgb(0, 0, 0);
+  width: 100%;
+  z-index: 2;
+  border: none;
+  border-radius: 10px;
+  color: rgb(241, 236, 236);
+}
+
 .selected{
-  background-color: black;
-  color: white;
+  background-color: rgb(35, 35, 35);
+  color: rgb(241, 236, 236);
   border: none;
 }
 

@@ -61,11 +61,12 @@
 
 .slider-button.prev {
   left: 0;
-  margin-left: 25px;
+  margin-left: 26px;
   top: calc(50% - 48px); 
   width: 25px;
   height: 28px;
   background-color: black;
+  z-index: 1;
 }
 
 .slider-button.next {
@@ -75,6 +76,7 @@
   width: 25px;
   height: 28px;
   background-color: black;
+  z-index: 1;
 }
 
 
