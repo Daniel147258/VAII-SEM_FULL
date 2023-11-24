@@ -25,10 +25,18 @@ export const ScrollToTopProvider = ({ children }) => {
       scrollToTop();
     };
 
+    const handleScroll = () => {
+      if (window.scrollY < 200) {
+        setInteractive(true);
+      }
+    };
+
     window.addEventListener('popstate', handleLocationChange);
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
       window.removeEventListener('popstate', handleLocationChange);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 

@@ -22,9 +22,7 @@ const ProductDisplay = (props) => {
   const interactive = useInteractive();
 
   useEffect(() => {
-   
-
-    window.scrollTo(0, 0);
+    window.scrollTo(0,200);
   }, [productId, scrollToTop]);
 
   useEffect(() => {
