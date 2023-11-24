@@ -7,3 +7,15 @@
         margin-top: 150px;
     }
 }
+.productDisplay{
+    margin-top: 20px;
+}
+
+
+@media(max-width: 575px){
+    .productDisplay{
+        margin-left: 40px;
+        margin-right: 40px; 
+    }
+
+}

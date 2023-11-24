@@ -41,16 +41,18 @@ const Nakupovanie = (props) => {
             {all_product.map((vec, i) => {
               if (props.category === vec.category) {
                 return (
-                  <div key={i} className="col-lg-4 col-md-6 mb-4">
-                    <Vec
-                      key={i}
-                      id={vec.id}
-                      category={vec.category}
-                      name={vec.name}
-                      image={vec.image}
-                      new_price={vec.new_price}
-                      old_price={vec.old_price}
-                    />
+                  <div key={i} className="col-lg-4 col-md-6 col-sm-6" >
+                    <div className='productDisplay'>
+                      <Vec
+                        key={i}
+                        id={vec.id}
+                        category={vec.category}
+                        name={vec.name}
+                        image={vec.image}
+                        new_price={vec.new_price}
+                        old_price={vec.old_price}
+                      />
+                    </div>
                   </div>
                 );
               }
