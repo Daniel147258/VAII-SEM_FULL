@@ -18,7 +18,7 @@ const Vec = (props) => {
       <div className="row">
         <div>
           <div
-            className={`vec ${isHovered ? 'hovered' : ''}`}
+            className="vec"
             onMouseOver={() => setIsHovered(true)}
             onMouseOut={() => setIsHovered(false)}
           >
@@ -30,7 +30,7 @@ const Vec = (props) => {
                 </div>
               )}
             <Link to={`/${props.category}/${props.id}`}>
-              <img className="img-fluid" src={props.image} alt="" />
+              <img className="img-fluid" src={props.image} id='hlavny' alt='hlavny' />
             </Link>
             <p>{props.name}</p>
             <div className="cena">

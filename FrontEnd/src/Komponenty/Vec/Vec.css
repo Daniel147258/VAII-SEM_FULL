@@ -1,11 +1,7 @@
-.vec p {
-    margin: 10px 0;
-    margin-right: auto;
-}
-
 .cena {
     display: flex;
-    gap: 20px;
+    margin-left: 0px;
+    gap: 10px;
 }
 
 .novaCena {
@@ -22,14 +18,15 @@
 }
 
 .vec:hover {
+    max-width: 100%;
     transform: scale(1.02);
     transition: 0.5s;
-    border: 8px solid rgb(242, 228, 228); 
+    border: 5px solid rgb(242, 228, 228); 
 }
 
-.vec img {
+#hlavny{
     max-width: 100%;
-    height: auto;
+    min-width: auto;
 }
 
 @media (max-width: 576px) {
@@ -73,3 +70,4 @@
     background-color: rgb(58, 57, 57);
     color: rgb(215, 210, 210);
 }
+
