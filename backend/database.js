@@ -3,9 +3,10 @@ const mysql = require('mysql');
 // Vytvoření připojení k databázi
 const connection = mysql.createConnection({
   host: 'localhost',
+  port:  3306,
   user: 'root', // Vaše uživatelské jméno
-  password: 'Krupica147258.', // Vaše heslo
-  database: 'mydb' // Název vaší databáze
+  password: '', // Vaše heslo
+  database: 'mydb', // Název vaší databáze
 });
 
 // Připojení k databázi
