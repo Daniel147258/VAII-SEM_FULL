@@ -32,7 +32,7 @@ const Vec = (props) => {
             <Link to={`/${props.category}/${props.id}`}>
               <img className="img-fluid" src={props.image} id='hlavny' alt='hlavny' />
             </Link>
-            <p>{props.name}</p>
+            <p>{props.name}ss</p>
             <div className="cena">
               <div className="novaCena">
                 €{props.new_price}
