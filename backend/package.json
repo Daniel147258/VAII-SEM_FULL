@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Daniel147258/VAII-SEM_FULL/issues"
   },
-  "homepage": "https://github.com/Daniel147258/VAII-SEM_FULL#readme"
+  "homepage": "https://github.com/Daniel147258/VAII-SEM_FULL#readme",
+  "dependencies": {
+    "mysql": "^2.18.1"
+  }
 }
