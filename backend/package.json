@@ -1,0 +1,19 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Serverova Cast webowej aplikacie fashionhsop ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Daniel147258/VAII-SEM_FULL.git"
+  },
+  "author": "Daniel Dziaba",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Daniel147258/VAII-SEM_FULL/issues"
+  },
+  "homepage": "https://github.com/Daniel147258/VAII-SEM_FULL#readme"
+}
