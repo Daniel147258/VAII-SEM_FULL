@@ -10,7 +10,6 @@ const connection = mysql.createConnection({
 const getPohlavie = () => {
   return new Promise((resolve, reject) => {
     const sqlQuery = 'SELECT * FROM pohlavie';
-
     connection.query(sqlQuery, (error, results) => {
       if (error) {
         reject(error);
@@ -21,6 +20,20 @@ const getPohlavie = () => {
   });
 };
 
+const getPouzivatel = () =>{
+    return new Promise((resolve, reject) => {
+        const sqlQuery = 'SELECT * FROM pouzivatel';
+        connection.query(sqlQuery, (error, results) => {
+          if (error) {
+            reject(error);
+          } else {
+            resolve(results);
+          }
+        });
+      });
+}
+
 module.exports = {
   getPohlavie,
+  getPouzivatel,
 };

@@ -11,7 +11,7 @@ import Produkt from './Strany/Produkt';
 import ZoznamOblubenych from './Strany/ZoznamOblubenych';
 import Nakup from './Strany/Nakup';
 import Login from './Strany/Login';
-
+import SkuskaApi from './Komponenty/SkuskaApi';
 function App() {
 
   return (
@@ -21,7 +21,7 @@ function App() {
         <Navbar/>
           <Menu/>
           <Routes>   
-            <Route path='/' element={<Uvodna/>}></Route>
+            <Route path='/' element={<SkuskaApi/>}></Route>
             <Route path='/women' element={<Kategoria category="women" />}></Route>
             <Route path='/men' element={<Kategoria category="men"/>}></Route>
             <Route path='/kid' element={<Kategoria category="kid"/>}></Route>
