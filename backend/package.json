@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Daniel147258/VAII-SEM_FULL#readme",
   "dependencies": {
+    "express": "^4.18.2",
     "mysql": "^2.18.1"
   }
 }
