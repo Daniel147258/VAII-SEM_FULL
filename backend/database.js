@@ -1,24 +1,26 @@
-const mysql = require('mysql');
+const mysql = require('mysql2');
 
-// Vytvoření připojení k databázi
 const connection = mysql.createConnection({
   host: 'localhost',
-  port:  3306,
-  user: 'root', // Vaše uživatelské jméno
-  password: '', // Vaše heslo
-  database: 'mydb', // Název vaší databáze
+  user: 'root',
+  password: 'Krupica147258.',
+  database: 'mydb',
 });
 
-// Připojení k databázi
-connection.connect((err) => {
-  if (err) {
-    console.error('Chyba připojení k databázi:', err);
-  } else {
-    console.log('Připojeno k databázi');
-  }
-});
+const getPohlavie = () => {
+  return new Promise((resolve, reject) => {
+    const sqlQuery = 'SELECT * FROM pohlavie';
 
-// Uzavření připojení po dokončení práce
-// connection.end();
+    connection.query(sqlQuery, (error, results) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(results);
+      }
+    });
+  });
+};
 
-module.exports = connection;
+module.exports = {
+  getPohlavie,
+};
