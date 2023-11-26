@@ -19,7 +19,7 @@ const SkuskaApi = () => {
 
   return (
     <div>
-      <h2>Seznam pohlaví</h2>
+      <h2>Zoznam pohlavi</h2>
       <ul>
         {pohlavi.map((pohlaviItem) => (
           <li>{pohlaviItem.pohlavie}</li>

@@ -12,6 +12,7 @@ import ZoznamOblubenych from './Strany/ZoznamOblubenych';
 import Nakup from './Strany/Nakup';
 import Login from './Strany/Login';
 import SkuskaApi from './Komponenty/SkuskaApi';
+import Registracia from './Komponenty/Registracia/Registracia';
 function App() {
 
   return (
@@ -21,7 +22,7 @@ function App() {
         <Navbar/>
           <Menu/>
           <Routes>   
-            <Route path='/' element={<SkuskaApi/>}></Route>
+            <Route path='/' element={<Uvodna/>}></Route>
             <Route path='/women' element={<Kategoria category="women" />}></Route>
             <Route path='/men' element={<Kategoria category="men"/>}></Route>
             <Route path='/kid' element={<Kategoria category="kid"/>}></Route>
@@ -30,6 +31,7 @@ function App() {
             <Route path='/zoznamOblubenych' element={<ZoznamOblubenych/>}></Route>
             <Route path='/login' element={<Login />}></Route>
             <Route path='/nakup' element={<Nakup></Nakup>}/>
+            <Route path='/registracia' element={<Registracia/>}></Route>
           </Routes>
       </BrowserRouter>
     </div>

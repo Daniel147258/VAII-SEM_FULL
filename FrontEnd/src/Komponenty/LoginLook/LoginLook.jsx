@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from 'react';
 import './LoginLook.css';
 import logo from '../../Subory/images/logo.jpg';
+import { Link } from 'react-router-dom';
 
 
 const LoginLook = () => {
@@ -44,7 +45,7 @@ const LoginLook = () => {
               </button>
             </form>
             <div className="text-lg-end mt-3">
-              <a href="">Ešte nie ste registrovaný?</a>
+              <Link to='/registracia'>Ešte nie ste registrovaný?</Link>
             </div>
             <div className="text-lg-end mt-3">
               <a href="#">Zabudli ste heslo?</a>
