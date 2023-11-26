@@ -35,7 +35,7 @@ const getPouzivatel = () =>{
 
 const pridajPouzivatela = (email,heslo, meno, adresa, mesto, psc) =>{
     return new Promise((resolve, reject) => {
-        const sqlQuery = 'CALL pridajPouzivatela(?, ?, ?, ?, ?, ?)';
+        const sqlQuery = 'CALL pridajNovehoPouzivatela(?, ?, ?, ?, ?, ?)';
         connection.query(sqlQuery, [email, heslo, meno, adresa, mesto, psc], (error, results) => {
             if (error) {
                 reject(error.message);
