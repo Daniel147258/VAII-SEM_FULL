@@ -47,6 +47,19 @@ app.get('/api/pohlavie', async (req, res) => {
     }
 });
 
+app.post('/api/checkEmail', async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    const exists = await database.kontrolaExistencieEmailu(email);
+    res.json({ exists });
+  } catch (error) {
+    console.error('Chyba pri kontrole e-mailu:', error);
+    res.status(500).json({ error: 'Nieco sa pokazilo pri kontrole e-mailu.' });
+  }
+});
+
+
 app.g
 app.listen(port, () => {
   console.log(`Server běží na portu ${port}`);

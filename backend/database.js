@@ -58,6 +58,8 @@ const kontrolaExistencieEmailu = (email) => {
   });
 }
 
+
+
 module.exports = {
   getPohlavie,
   getPouzivatel,
