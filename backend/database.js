@@ -45,9 +45,22 @@ const pridajPouzivatela = (email,heslo, meno, adresa, mesto, psc) =>{
         });
     });
 }
+const kontrolaExistencieEmailu = (email) => {
+  return new Promise((resolve, reject) => {
+      const sqlQuery = 'SELECT 1 FROM pouzivatel WHERE email = ?';
+      connection.query(sqlQuery, [email], (error, results) => {
+          if (error) {
+              reject(error.message);
+          } else {
+              resolve(results.length > 0);
+          }
+      });
+  });
+}
 
 module.exports = {
   getPohlavie,
   getPouzivatel,
   pridajPouzivatela,
+  kontrolaExistencieEmailu,
 };

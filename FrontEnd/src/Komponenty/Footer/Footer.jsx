@@ -1,7 +1,22 @@
 import React from 'react'
 import './Footer.css'
-
+import { useNavigate } from 'react-router'
 const Footer = () => {
+  const navigate = useNavigate();
+  
+  const handleDomov = () => {
+    navigate('/');
+  }
+
+  const handleRegitracia = () => {
+    navigate('/registracia');
+  }
+
+  const handlePrihlasenie = () => {
+    navigate('/login');
+  }
+
+
   return (
     <div>
         <footer class="text-center text-white" id="footer">
@@ -64,13 +79,13 @@ const Footer = () => {
                         <h5 class="text-uppercase">Links</h5>
                         <ul class="list-unstyled mb-0">
                             <li>
-                                <a href="Uvod.html" class="text-white">Domov</a>
+                                <a href='' onClick={handleDomov} class="text-white">Domov</a>
                             </li>
                             <li>
-                                <a href="#!" class="text-white">Registrácia</a>
+                                <a href='' onClick={handleRegitracia} class="text-white">Registrácia</a>
                             </li>
                             <li>
-                                <a href="Prihlasenie.html" class="text-white">Prihlásiť sa</a>
+                                <a href='' onClick={handlePrihlasenie} class="text-white">Prihlásiť sa</a>
                             </li>
                             <li>
                                 <a href="#!" class="text-white">About</a>

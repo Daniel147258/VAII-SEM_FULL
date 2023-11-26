@@ -1,3 +1,7 @@
 #footer{
     background-color: #e29a9a;
 }
+
+.li{
+    cursor: pointer;
+}

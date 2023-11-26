@@ -13,33 +13,41 @@ app.get('/api/pohlavie', async (req, res) => {
       const pohlavie = await database.getPohlavie();
       res.json(pohlavie);
     } catch (error) {
-      console.error('Chyba při získávání pohlaví:', error);
-      res.status(500).send('Chyba při získávání pohlaví');
+      console.error('Chyba pri dostavani pohlavia:', error);
+      res.status(500).send('Chyba pri dostavani pohlavia');
     }
   });
 
-  app.get('/api/pouzivatel', async (req, res) => {
+  app.get('/api/pouzivatelia', async (req, res) => {
     try {
       const pouzivatel = await database.getPouzivatel();
       res.json(pouzivatel);
     } catch (error) {
-      console.error('Chyba při získávání pohlaví:', error);
-      res.status(500).send('Chyba při získávání pohlaví');
+      console.error('Chyba pri dostavani pohlavia pouzivatelov:', error);
+      res.status(500).send('Chyba pri dostavani pohlavia pouzivatelov');
     }
   });
 
-  app.post('/api/pridajPouzivatela', (req, res) =>{
-    const{ email,heslo, meno, adresa, mesto, psc, } = req.body;
+  app.post('/api/pridajPouzivatela', async (req, res) => {
+    const { email, heslo, meno, adresa, mesto, psc } = req.body;
 
-    database.pridajPouzivatela(email, heslo, meno, adresa, mesto, psc)
-        .then((result)=>{
-            res.json({sucess: true, result});
-        })
-        .catch((error) =>{
-            res.status(500).json({sucess: false, error:error.message });
-        });
-  });
+    try {
+        // Kontrola, zda e-mail již existuje v databázi
+        const emailExists = await database.kontrolaExistencieEmailu(email);
 
+        if (emailExists) {
+            return res.status(400).json({ success: false, error: 'Email už existuje !!' });
+        }
+
+        // Pokud e-mail neexistuje, provede se vložení do databáze
+        const result = await database.pridajPouzivatela(email, heslo, meno, adresa, mesto, psc);
+        res.json({ success: true, result });
+    } catch (error) {
+        res.status(500).json({ success: false, error: error.message });
+    }
+});
+
+app.g
 app.listen(port, () => {
   console.log(`Server běží na portu ${port}`);
 });
