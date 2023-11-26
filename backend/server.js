@@ -3,10 +3,10 @@ const app = express();
 const cors = require('cors');
 const port = 3008; 
 const database = require('./database.js');
-
+const bodyParser = require('body-parser');
 
 app.use(cors());
-
+app.use(bodyParser.json());
 
 app.get('/api/pohlavie', async (req, res) => {
     try {
