@@ -66,6 +66,7 @@ app.get('/api/pohlavie', async (req, res) => {
     }
 });
 
+
 app.post('/api/checkEmail', async (req, res) => {
   const { email } = req.body;
 
@@ -88,6 +89,19 @@ app.post('/api/zrusUcet', async(req,res) => {
     }
 });
 
+
+app.post('/api/zmenHeslo', async (req, res) => {
+  const { newPassword, id } = req.body; // tu musi byt nazov premennych rovnaky ako ktore sa odosielaju z frontendu
+  console.log('Prijaté dáta:', newPassword, id);
+
+  try {
+    const result = await database.zmenHeslo(newPassword, id);
+    res.json({ success: true });
+  } catch (error) {
+    console.error('Nieco sa pokazilo pri odstranovani', error);
+    res.status(500).json({ error: 'Nieco sa pokazilo pri odstranovani' });
+  }
+});
 app.g
 app.listen(port, () => {
   console.log(`Server běží na portu ${port}`);

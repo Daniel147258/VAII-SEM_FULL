@@ -78,6 +78,19 @@ const odstranUcet = (email) => {
       if (error) {
         reject(error);
       } else {
+        resolve({ success: true });
+      }
+    });
+  });
+};
+
+const zmenHeslo = (heslo, idPouzivatel) => {
+  return new Promise((resolve, reject) => {
+    const sqlQuery = 'CALL zmenHeslo(?, ?)';
+    connection.query(sqlQuery, [idPouzivatel, heslo], (error, results) => {
+      if (error) {
+        reject(error);
+      } else {
         resolve(results);
       }
     });
@@ -91,4 +104,5 @@ module.exports = {
   kontrolaExistencieEmailu,
   getPrihlasovacieUdajePouzivatela,
   odstranUcet,
+  zmenHeslo,
 };

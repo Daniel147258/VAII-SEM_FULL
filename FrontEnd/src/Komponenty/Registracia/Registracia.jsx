@@ -151,11 +151,15 @@ const Registracia = ({ }) => {
           <FormControl type="text" value={psc} onChange={(e) => setPsc(e.target.value)} required />
         </FormGroup>
 
+        <div className='text-end'>
         {fromOk ? (
-            <Button style={{marginTop: '25px',marginBottom: '200px', width: '30%'}} type="submit">Registrovat</Button>
+            <Button style={{marginTop: '25px',marginBottom: '200px', width: '30%', 
+            backgroundColor: 'black', borderColor: 'white'}} type="submit">Registrovať sa</Button>
           ) : (
-            <Button style={{marginTop: '25px',marginBottom: '200px', width: '30%'}} disabled>Registrovat</Button>
+            <Button style={{marginTop: '25px',marginBottom: '200px', width: '30%', 
+            backgroundColor: 'black', borderColor: 'white'}} disabled>Registrovať sa</Button>
           )}
+          </div>
       </Form>
 
       {error && <div style={{ color: 'red' }}>{error}</div>}
