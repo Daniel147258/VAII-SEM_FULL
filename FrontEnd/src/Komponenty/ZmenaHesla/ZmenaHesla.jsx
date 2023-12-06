@@ -2,23 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useUser } from '../../Kontext/User';
 import { Navigate } from 'react-router';
 import axios from 'axios';
-import { Modal } from 'react-bootstrap';
+import Modal from 'react-modal';
 import { useNavigate } from 'react-router';
 
-const ZmenaHesla = () => {
 
-  const { loggedInUser, loginUser } = useUser();
-  const [oldPassword, setOldPassword] = useState('');
-  const [newPassword, setNewPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const[hesloPoziadavkyNesplnene, setHesloPoziadavkyNesplnene] = useState(null);
-  const[hesloPoziadavkySplnene, setHesloPoziadavkySplnene] = useState(null);
-  const[heslaNezhodne, setHeslaNezhodne] = useState(null);
-  const[fromOk, setFormOk] = useState(false);
-  const[errorZleStareHeslo, setErrorZleStareHeslo] = useState(null);
-  const[isModalOpen, setIsModal] = useState(false);
-  const navigate = useNavigate();
-  const customStyles = {
+const customStyle = {
     overlay: {
       backgroundColor: 'rgba(0, 0, 0, 0.5)',
     },
@@ -33,6 +21,21 @@ const ZmenaHesla = () => {
       borderRadius: '8px',
     },
   };
+
+const ZmenaHesla = () => {
+
+  const { loggedInUser, loginUser } = useUser();
+  const [oldPassword, setOldPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const[hesloPoziadavkyNesplnene, setHesloPoziadavkyNesplnene] = useState(null);
+  const[hesloPoziadavkySplnene, setHesloPoziadavkySplnene] = useState(null);
+  const[heslaNezhodne, setHeslaNezhodne] = useState(null);
+  const[fromOk, setFormOk] = useState(false);
+  const[errorZleStareHeslo, setErrorZleStareHeslo] = useState(null);
+  const[isModalOpen, setIsOpenModal] = useState(false);
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     if(heslaNezhodne === null && hesloPoziadavkyNesplnene === null && errorZleStareHeslo === null){
@@ -116,7 +119,7 @@ const ZmenaHesla = () => {
         console.log("Uspesna zmena hesla");
         loggedInUser.heslo = newPassword;
         localStorage.setItem('loginUser', JSON.stringify(loggedInUser));
-        setIsModal(true);
+        setIsOpenModal(true);
       }
     } catch (error) {
       console.error('Chyba pri zmenení hesla:', error);
@@ -124,7 +127,7 @@ const ZmenaHesla = () => {
   };
 
   const confirmPresmerovanie = () => {
-    setIsModal(false);
+    setIsOpenModal(false);
     navigate('/pouzivatel');
   }
 
@@ -192,19 +195,19 @@ const ZmenaHesla = () => {
                   </div>
                 </form>
             </div>
-          </div>
-        </div>
-        <Modal
+            <Modal
             isOpen={isModalOpen}
-            onRequestClose={() => setIsModal(false)}
+            onRequestClose={() => setIsOpenModal(false)}
             contentLabel="Potvrdiť zrusenie"
-            style={customStyles} 
+            style={customStyle} 
         >
             <h2 style={{fontSize: '20px'}}>Heslo úspešne zmenené</h2>
             <div className='text-end'> 
-                <button onClick={confirmPresmerovanie} className='odhlasenie2'>OK</button>
+                <button onClick={confirmPresmerovanie} className='odhlasenie2'>Dobre</button>
             </div>
         </Modal>
+          </div>
+        </div>
       </div>
     </div>
   );
