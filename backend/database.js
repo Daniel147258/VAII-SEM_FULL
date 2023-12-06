@@ -58,6 +58,19 @@ const kontrolaExistencieEmailu = (email) => {
   });
 }
 
+const getPrihlasovacieUdajePouzivatela = (email, heslo) => {
+  return new Promise((resolve, reject) => {
+    const sqlQuery = 'SELECT * FROM pouzivatel WHERE email = ? AND heslo = ?';
+    connection.query(sqlQuery, [email, heslo], (error, results) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(results[0]);
+      }
+    });
+  });
+};
+
 
 
 module.exports = {
@@ -65,4 +78,5 @@ module.exports = {
   getPouzivatel,
   pridajPouzivatela,
   kontrolaExistencieEmailu,
+  getPrihlasovacieUdajePouzivatela,
 };

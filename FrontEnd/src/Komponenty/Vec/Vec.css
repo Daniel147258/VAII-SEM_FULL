@@ -17,17 +17,22 @@
     text-decoration: line-through;
 }
 
-.vec:hover {
+
+.vec-container:hover {
     max-width: 100%;
     transform: scale(1.02);
     transition: 0.5s;
-    border: 4px solid rgb(241, 232, 232); 
+    border: 1px solid rgb(241, 232, 232); 
+    padding: 10px;
 }
 
+  
 #hlavny{
     max-width: 100%;
     min-width: auto;
 }
+
+
 
 @media (max-width: 576px) {
     .cena {
@@ -44,23 +49,21 @@
     position: absolute;
     top: 0;
     left: 0;
-    padding: 10px;
+    padding: 12px;
   }
 
 .addToOblubene{
     border: none;
-    z-index: 3;
     color: transparent;
     background-color: transparent;
 }
 
 .addToCartButton{
-    margin-top: 25px;
     border: none;
     background-color: rgb(0, 0, 0);
     color: white;
-    border-radius: 8px;
-    height: 45px;
+    border-radius: 13px;
+    height: 35px;
     width: 90%;
     margin-left: 15px;
     margin-bottom: 15px;
@@ -71,3 +74,32 @@
     color: rgb(215, 210, 210);
 }
 
+.jozo{
+    position: absolute;
+    bottom: 0;
+    margin-left: -20px;
+    background-color: rgba(255, 255, 255, 0.835);
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    height: 12vh;
+}
+
+@media (max-width: 576px) {
+    .jozo{
+        height: 20vh;
+    }
+}
+#cen {
+    text-align: left; 
+    padding-left: 25px; 
+  }
+  
+#ds {
+    text-align: left; 
+    padding-left: 25px; 
+}
+  
+
+  
+  

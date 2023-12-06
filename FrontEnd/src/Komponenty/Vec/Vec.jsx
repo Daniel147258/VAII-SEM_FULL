@@ -8,48 +8,75 @@ const Vec = (props) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isOblubene, setOblubene] =  useState(false);
 
+
   const heart2 = isOblubene ? heartFill : heart; 
   
   const handleIsOblubene = () =>{
     setOblubene(!isOblubene);
   }
+
+  const handleMouseOver = () => {
+    setIsHovered(true);
+
+  };
+
+  const handleMouseOut = () => {
+    setIsHovered(false);
+
+  };
+  
   return (
-    <div className="container">
-      <div className="row">
-        <div>
-          <div
-            className="vec"
-            onMouseOver={() => setIsHovered(true)}
-            onMouseOut={() => setIsHovered(false)}
-          >
-              {isHovered && (
-                <div className="hoverOverlay">
-                    <button className='addToOblubene' onClick={handleIsOblubene}>
-                        <img className="heartIcon" src={heart2} alt="Heart" height={35} width={35} />
-                    </button>
+    <div className="container" >
+    <div className="row" >
+      <div className="vec-container"  >
+        <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
+        <div className={`vec ${isHovered ? 'hovered' : ''}`} >
+          {isHovered && (
+            <div className="hoverOverlay" >
+              <button className='addToOblubene' onClick={handleIsOblubene}>
+                <img className="heartIcon" src={heart2} alt="Heart" height={33} width={33} />
+              </button>
+            </div>
+          )}
+          <Link to={`/${props.category}/${props.id}`}>
+            <img className="img-fluid" src={props.image} id='hlavny' alt='hlavny' />
+          </Link>
+          </div>
+          </div>
+          {!isHovered && (
+            <div>
+              <p>{props.name}</p>
+              <div className="cena">
+                <div className="novaCena">
+                  {props.new_price}€
                 </div>
-              )}
-            <Link to={`/${props.category}/${props.id}`}>
-              <img className="img-fluid" src={props.image} id='hlavny' alt='hlavny' />
-            </Link>
-            <p>{props.name}</p>
-            <div className="cena">
-              <div className="novaCena">
-                €{props.new_price}
-              </div>
-              <div className="staraCena">
-                €{props.old_price}
+                <div className="staraCena">
+                  {props.old_price}€
+                </div>
               </div>
             </div>
-            {isHovered && (
-              <div className="">
-                <button className="addToCartButton">Vložiť do košíka</button>
+          )}
+        <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
+        {isHovered && (
+          <div className='jozo'>
+             <div className="cena" id='cen' >
+                <div className="novaCena">
+                  {props.new_price}€
+                </div>
+                <div className="staraCena">
+                  {props.old_price}€
+                </div>
               </div>
-            )}
+            <p className='' id='ds' >Dostupné veľkosti: X, S, M, L, XL</p>
+            <div className="buttonContainer">
+              <button className="addToCartButton">Vložiť do košíka</button>
+            </div>
           </div>
+        )}
         </div>
       </div>
     </div>
+  </div>
   );
 };
 

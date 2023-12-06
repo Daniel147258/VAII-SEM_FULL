@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 
 app.use(cors());
 app.use(bodyParser.json());
+app.use(express.json());
 
 app.get('/api/pohlavie', async (req, res) => {
     try {
@@ -15,6 +16,24 @@ app.get('/api/pohlavie', async (req, res) => {
     } catch (error) {
       console.error('Chyba pri dostavani pohlavia:', error);
       res.status(500).send('Chyba pri dostavani pohlavia');
+    }
+  });
+
+  app.post('/api/prihlasenie', async(req, res)=>{
+    const { email, heslo } = req.body;
+  
+    try {
+      const user = await database.getPrihlasovacieUdajePouzivatela(email, heslo);
+
+      if (user) {
+        res.json(user);
+
+      } else {
+        es.json(null);
+      }
+
+    } catch (error) {
+      res.json(null);
     }
   });
 
