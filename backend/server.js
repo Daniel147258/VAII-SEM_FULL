@@ -78,6 +78,15 @@ app.post('/api/checkEmail', async (req, res) => {
   }
 });
 
+app.post('/api/zrusUcet', async(req,res) => {
+    const { email } = req.body;
+    try {
+      const exists = await database.odstranUcet(email);
+    } catch (error) {
+      console.error('Nieco sa pokazilo pri odstranovani', error);
+      res.status(500).json({ error: 'Nieco sa pokazilo pri odstranovani' });
+    }
+});
 
 app.g
 app.listen(port, () => {

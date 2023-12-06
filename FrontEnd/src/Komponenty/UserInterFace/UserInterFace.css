@@ -1,0 +1,43 @@
+.odhlasenie{
+    border: none;
+    background-color: black;
+    margin-top: 20px;
+    color: white;
+    width: 180px;
+    height: 25px;
+    border-radius: 15px;
+}
+.odhlasenie:hover{
+    background-color: gray;
+}
+
+.alink{
+    text-decoration: none;
+    color: white;
+
+}
+.zmenaHesla{
+    border: none;
+    background-color: black;
+    margin-top: 85px;
+    color: white;
+    width: 180px;
+    height: 25px;
+    border-radius: 15px;
+}
+.zmenaHesla:hover{
+    background-color: gray;
+}
+
+.odhlasenie2{
+    border: none;
+    background-color: black;
+    margin-top: 20px;
+    color: white;
+    width: 120px;
+    height: 25px;
+    border-radius: 15px;
+}
+.odhlasenie2:hover{
+    background-color: gray;
+}

@@ -71,7 +71,18 @@ const getPrihlasovacieUdajePouzivatela = (email, heslo) => {
   });
 };
 
-
+const odstranUcet = (email) => {
+  return new Promise((resolve, reject)=> {
+    const sqlQuery = 'Delete FROM pouzivatel WHERE email = ? ';
+    connection.query(sqlQuery, [email], (error, results) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(results);
+      }
+    });
+  });
+};
 
 module.exports = {
   getPohlavie,
@@ -79,4 +90,5 @@ module.exports = {
   pridajPouzivatela,
   kontrolaExistencieEmailu,
   getPrihlasovacieUdajePouzivatela,
+  odstranUcet,
 };

@@ -45,16 +45,17 @@ const LoginLook = () => {
   };
 
   useEffect(() => {
-    // Skontrolujte localStorage pri načítaní komponentu
-    const storedUser = localStorage.getItem('loginUser');
-    if (storedUser) {
-      loginUser(JSON.parse(storedUser));
+    if(loggedInUser){
+      navigate('/pouzivatel');
     }
-  }, []); 
+    
+  }, [loginUser]); 
+
+  
 
   return (
     <div>
-      {loginUser === null ?(
+      {loggedInUser === null ?(
       <div className="bg-dark text-white" style={{ minHeight: '100vh', display: 'flex' }}>
         <div className="container" style={{ marginTop: '50px' }}>
           <div className="row justify-content-center">
@@ -110,11 +111,7 @@ const LoginLook = () => {
       </div>
       ) : (
         <div>
-          <img src={logo} alt="logo" id="logo" width="72" height="72" />
-          <h1 className="h3 mb-3 font-weight-normal">Prihlásenie</h1>
-          {/* ďalší HTML obsah pre prihlásenie */}
-          <Link to='/registracia'>Ešte nie ste registrovaný?</Link>
-          <a href="#">Zabudli ste heslo?</a>
+          
         </div>
       )}
     </div>

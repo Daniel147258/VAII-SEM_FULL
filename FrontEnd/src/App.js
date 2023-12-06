@@ -1,6 +1,6 @@
 
 import './App.css';
-import React from 'react';
+import React, {useEffect} from 'react';
 import Navbar from './Komponenty/Navbar/Navbar';
 import PomocnyNavBar from './Komponenty/PomocnyNavBar/PomocnyNavBar'
 import Menu from './Komponenty/Menu/Menu'
@@ -11,10 +11,10 @@ import Produkt from './Strany/Produkt';
 import ZoznamOblubenych from './Strany/ZoznamOblubenych';
 import Nakup from './Strany/Nakup';
 import Login from './Strany/Login';
-import SkuskaApi from './Komponenty/SkuskaApi';
 import Registracia from './Komponenty/Registracia/Registracia';
+import UserInterFace from './Komponenty/UserInterFace/UserInterFace';
+import ZmenaHesla from './Komponenty/ZmenaHesla/ZmenaHesla';
 function App() {
-
   return (
     <div>
       <BrowserRouter>
@@ -32,6 +32,8 @@ function App() {
             <Route path='/login' element={<Login />}></Route>
             <Route path='/nakup' element={<Nakup></Nakup>}/>
             <Route path='/registracia' element={<Registracia/>}></Route>
+            <Route path='/pouzivatel' element={<UserInterFace></UserInterFace>}></Route>
+            <Route path='/zmenaHesla' element={<ZmenaHesla></ZmenaHesla>}></Route>
           </Routes>
       </BrowserRouter>
     </div>
