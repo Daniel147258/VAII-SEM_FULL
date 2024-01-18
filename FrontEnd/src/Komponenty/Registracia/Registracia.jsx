@@ -167,7 +167,7 @@ const Registracia = ({ }) => {
       {isRegistrationSuccess && (
         <div className="losd" style={{ marginTop: '150px' }}>
           <div className="s">
-            <p>Byli jste úspěšně zaregistrováni!</p>
+            <p>Boli ste úspešne zaregistrovani!</p>
             <Button onClick={() => navigate('/')}>Super</Button>
           </div>
         </div>
