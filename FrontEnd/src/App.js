@@ -14,6 +14,8 @@ import Login from './Strany/Login';
 import Registracia from './Komponenty/Registracia/Registracia';
 import UserInterFace from './Komponenty/UserInterFace/UserInterFace';
 import ZmenaHesla from './Komponenty/ZmenaHesla/ZmenaHesla';
+import PridajProduktLook from './Komponenty/PridajProduktLook/PridajProdukt';
+
 function App() {
   return (
     <div>
@@ -26,14 +28,14 @@ function App() {
             <Route path='/women' element={<Kategoria category="women" />}></Route>
             <Route path='/men' element={<Kategoria category="men"/>}></Route>
             <Route path='/kid' element={<Kategoria category="kid"/>}></Route>
-            <Route path=":category/:productId" element={<Produkt/>}>
-            </Route>
+            <Route path=":category/:productId" element={<Produkt/>}></Route>
             <Route path='/zoznamOblubenych' element={<ZoznamOblubenych/>}></Route>
             <Route path='/login' element={<Login />}></Route>
             <Route path='/nakup' element={<Nakup></Nakup>}/>
             <Route path='/registracia' element={<Registracia/>}></Route>
             <Route path='/pouzivatel' element={<UserInterFace></UserInterFace>}></Route>
             <Route path='/zmenaHesla' element={<ZmenaHesla></ZmenaHesla>}></Route>
+            <Route path='/pridajProdukt' element={<PridajProduktLook></PridajProduktLook>}></Route>
           </Routes>
       </BrowserRouter>
     </div>

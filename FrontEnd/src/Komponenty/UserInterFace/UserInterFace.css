@@ -41,3 +41,17 @@
 .odhlasenie2:hover{
     background-color: gray;
 }
+
+.butonas{
+    border: none;
+    background-color: black;
+    margin-top: 20px;
+    color: white;
+    width: 180px;
+    height: 25px;
+    border-radius: 15px;
+}
+
+.butonas:hover{
+    background-color: gray;
+}

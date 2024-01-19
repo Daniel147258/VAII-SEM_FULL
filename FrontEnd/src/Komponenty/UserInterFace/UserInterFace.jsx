@@ -29,14 +29,12 @@ const UserInterFace = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isModalOpen2, setIsModalOpen2] = useState(false);
     const { loggedInUser, logoutUser } = useUser();
-
+  
     if(!loggedInUser){
         return <Navigate to='/'/>
-      }
+    }
 
     const email = loggedInUser.email;
-
-    
 
       const handleOdhlasenie = () =>{
        setIsModalOpen(true);
@@ -111,6 +109,13 @@ const UserInterFace = () => {
                     Zrušiť účet
                     </button>
                 </div>
+                {loggedInUser.admin === 1 && (
+                    <div className='text-end'>
+                        <Link className='addlink' to="/pridajProdukt">
+                          <button className='butonas'>Pridať produkt</button>
+                        </Link>
+                    </div>
+                    )}
                 </div>
             </div>
             </div>
