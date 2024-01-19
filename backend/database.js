@@ -97,6 +97,45 @@ const zmenHeslo = (heslo, idPouzivatel) => {
   });
 };
 
+const getFarby = () => {
+    return new Promise((resolve, reject) =>{
+      const sqlQuery = "SELECT * from farba";
+      connection.query(sqlQuery,(error,results)=>{
+        if(error){
+          reject(error);
+        } else{
+          resolve(results);
+        }
+      });
+    });
+};
+
+const getKategorie = () => {
+  return new Promise((resolve, reject) =>{
+    const sqlQuery = "SELECT * from Kategoria";
+    connection.query(sqlQuery,(error,results)=>{
+      if(error){
+        reject(error);
+      } else{
+        resolve(results);
+      }
+    });
+  });
+};
+
+const pridajProdukt = (pohlavie, kategoria, subKategoria, nazov, image, cena, popis) =>{
+  return new Promise((resolve, reject) => {
+      const sqlQuery = 'CALL pridajNovyProdukt(?,?,?,?,?,?, ?)';
+      connection.query(sqlQuery, [pohlavie, kategoria, subKategoria, nazov, image, cena, popis], (error, results) => {
+          if (error) {
+              reject(error.message);
+          } else {
+              resolve(results);
+          }
+      });
+  });
+}
+
 module.exports = {
   getPohlavie,
   getPouzivatel,
@@ -105,4 +144,7 @@ module.exports = {
   getPrihlasovacieUdajePouzivatela,
   odstranUcet,
   zmenHeslo,
+  getFarby,
+  getKategorie,
+  pridajProdukt,
 };

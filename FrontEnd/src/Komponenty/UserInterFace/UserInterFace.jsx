@@ -8,6 +8,8 @@ import logo from '../../Subory/images/logo.jpg';
 import ui from '../../Subory/images/ui.jpg';
 import axios from 'axios';
 
+
+//Styl pre modalne okna
 const customStyles = {
     overlay: {
       backgroundColor: 'rgba(0, 0, 0, 0.5)',

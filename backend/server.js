@@ -4,7 +4,6 @@ const cors = require('cors');
 const port = 3008; 
 const database = require('./database.js');
 const bodyParser = require('body-parser');
-
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
@@ -51,14 +50,14 @@ app.get('/api/pohlavie', async (req, res) => {
     const { email, heslo, meno, adresa, mesto, psc } = req.body;
 
     try {
-        // Kontrola, zda e-mail již existuje v databázi
+       
         const emailExists = await database.kontrolaExistencieEmailu(email);
 
         if (emailExists) {
             return res.status(400).json({ success: false, error: 'Email už existuje !!' });
         }
 
-        // Pokud e-mail neexistuje, provede se vložení do databáze
+        
         const result = await database.pridajPouzivatela(email, heslo, meno, adresa, mesto, psc);
         res.json({ success: true, result });
     } catch (error) {
@@ -102,7 +101,40 @@ app.post('/api/zmenHeslo', async (req, res) => {
     res.status(500).json({ error: 'Nieco sa pokazilo pri odstranovani' });
   }
 });
-app.g
+
+
 app.listen(port, () => {
   console.log(`Server běží na portu ${port}`);
+});
+
+app.get('/api/getFarby', async (req, res) => {
+  try {
+    const farby = await database.getFarby();
+    res.json(farby);
+  } catch (error) {
+    console.error('Chyba pri dostavani pohlavia:', error);
+    res.status(500).send('Chyba pri dostavani pohlavia');
+  }
+});
+
+
+app.post('/api/pridajProdukt', async (req, res) => {
+  const { selectedPohlavie, selectedCategory, sub, name, image, prize, popis } = req.body;
+  console.log(image);
+  try {
+      const result = await database.pridajProdukt( selectedPohlavie, selectedCategory, sub, name, image, prize, popis );
+      res.json({ success: true, result });
+  } catch (error) {
+      res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+app.get('/api/getKategorie', async (req, res) => {
+  try {
+    const kategorie = await database.getKategorie();
+    res.json(kategorie);
+  } catch (error) {
+    console.error('Chyba pri dostavani pohlavia:', error);
+    res.status(500).send('Chyba pri dostavani pohlavia');
+  }
 });
