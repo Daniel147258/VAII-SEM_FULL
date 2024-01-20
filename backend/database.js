@@ -123,10 +123,10 @@ const getKategorie = () => {
   });
 };
 
-const pridajProdukt = (pohlavie, kategoria, subKategoria, nazov, image, cena, popis) =>{
+const pridajProdukt = (selectedPohlavie, selectedCategory,sub, name, image, prize, popis) =>{
   return new Promise((resolve, reject) => {
-      const sqlQuery = 'CALL pridajNovyProdukt(?,?,?,?,?,?, ?)';
-      connection.query(sqlQuery, [pohlavie, kategoria, subKategoria, nazov, image, cena, popis], (error, results) => {
+      const sqlQuery = 'CALL pridajNovyProdukt(?, ?, ? ,? ,? ,? ,? )';
+      connection.query(sqlQuery, [selectedPohlavie, selectedCategory, sub ,name, image, prize, popis], (error, results) => {
           if (error) {
               reject(error.message);
           } else {
@@ -135,6 +135,19 @@ const pridajProdukt = (pohlavie, kategoria, subKategoria, nazov, image, cena, po
       });
   });
 }
+
+const getProdukty = () => {
+  return new Promise((resolve, reject) =>{
+    const sqlQuery = "SELECT * from produkt";
+    connection.query(sqlQuery,(error,results)=>{
+      if(error){
+        reject(error);
+      } else{
+        resolve(results);
+      }
+    });
+  });
+};
 
 module.exports = {
   getPohlavie,
@@ -147,4 +160,5 @@ module.exports = {
   getFarby,
   getKategorie,
   pridajProdukt,
+  getProdukty,
 };

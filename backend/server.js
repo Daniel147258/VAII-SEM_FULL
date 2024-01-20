@@ -4,6 +4,9 @@ const cors = require('cors');
 const port = 3008; 
 const database = require('./database.js');
 const bodyParser = require('body-parser');
+const multer = require('multer');
+const storage = multer.memoryStorage(); // Ukladam subor do pamati nie na disk
+const upload = multer({ storage: storage });
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
@@ -118,15 +121,25 @@ app.get('/api/getFarby', async (req, res) => {
 });
 
 
-app.post('/api/pridajProdukt', async (req, res) => {
-  const { selectedPohlavie, selectedCategory, sub, name, image, prize, popis } = req.body;
-  console.log(image);
-  try {
-      const result = await database.pridajProdukt( selectedPohlavie, selectedCategory, sub, name, image, prize, popis );
+app.post('/api/pridajProdukt', upload.single('image'), async (req, res) => {
+  const { selectedPohlavie, selectedCategory, sub, name, prize, popis } = req.body;
+  const image = req.file.buffer;
+  if(sub === "null"){
+      try {
+        const result = await database.pridajProdukt(selectedPohlavie, selectedCategory, null, name, image, prize, popis);
+        res.json({ success: true, result });
+      } catch (error) {
+          res.status(500).json({ success: false, error: error.message });
+      }
+  } else{
+    try {
+      const result = await database.pridajProdukt(selectedPohlavie, selectedCategory, sub, name, image, prize, popis);
       res.json({ success: true, result });
-  } catch (error) {
-      res.status(500).json({ success: false, error: error.message });
+      } catch (error) {
+          res.status(500).json({ success: false, error: error.message });
+      }
   }
+
 });
 
 app.get('/api/getKategorie', async (req, res) => {
@@ -136,5 +149,15 @@ app.get('/api/getKategorie', async (req, res) => {
   } catch (error) {
     console.error('Chyba pri dostavani pohlavia:', error);
     res.status(500).send('Chyba pri dostavani pohlavia');
+  }
+});
+
+app.get('/api/getProdukty', async (req, res) => {
+  try {
+    const kategorie = await database.getProdukty();
+    res.json(kategorie);
+  } catch (error) {
+    console.error('Chyba pri dostavani produktov:', error);
+    res.status(500).send('Chyba pri dostavani produktov');
   }
 });

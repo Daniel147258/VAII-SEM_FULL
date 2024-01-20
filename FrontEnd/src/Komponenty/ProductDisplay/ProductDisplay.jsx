@@ -3,7 +3,6 @@ import './ProductDisplay.css';
 import Breadcrumb from '../Breadcrumb/Breadcrumb';
 import { useBreadcrumb } from '../../Kontext/BreadcrumbContext';
 import SizeDropdown from '../SizeDropdown/Sizedropdown';
-import RecenziaBox from '../RecenziaBox/RecenziaBox';
 import Footer from '../Footer/Footer';
 import RelevantProducts from '../RelevantProducts/RelevantProducts';
 import { useScrollToTop, useInteractive } from '../../Kontext/ScollToTopContext';
@@ -138,7 +137,6 @@ const ProductDisplay = (props) => {
       </div>
       {interactive && (
       <div>
-        <RecenziaBox/>
         <RelevantProducts produkt={product} pocet={5} />
         <Footer/>
       </div>

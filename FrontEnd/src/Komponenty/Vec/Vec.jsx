@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Vec.css';
 import { Link } from 'react-router-dom';
 import heart from '../../Subory/images/heart.png';
@@ -7,7 +7,7 @@ import heartFill from '../../Subory/images/heart-fill.png';
 const Vec = (props) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isOblubene, setOblubene] =  useState(false);
-
+  const [imageUrl, setImageUrl] = useState(null);
 
   const heart2 = isOblubene ? heartFill : heart; 
   
@@ -24,6 +24,15 @@ const Vec = (props) => {
     setIsHovered(false);
 
   };
+
+
+
+  useEffect(() => {
+    if (props.image && props.image.type === 'Buffer' && Array.isArray(props.image.data)) {
+      const blob = new Blob([new Uint8Array(props.image.data)], { type: 'image/jpeg' });
+      setImageUrl(URL.createObjectURL(blob));
+    }
+  }, [props.image]);
   
   return (
     <div className="container" >
@@ -39,7 +48,8 @@ const Vec = (props) => {
             </div>
           )}
           <Link to={`/${props.category}/${props.id}`}>
-            <img className="img-fluid" src={props.image} id='hlavny' alt='hlavny' />
+            {imageUrl && (<img className="img-fluid" src={imageUrl} id='hlavny' alt='hlavny' />)}
+            {imageUrl === null && (<img className="img-fluid" src={props.image} id='hlavny' alt='hlavny' />)}
           </Link>
           </div>
           </div>
