@@ -1,0 +1,27 @@
+.search-results {
+    margin-top: 10px;
+    
+  }
+  
+  .search-result-item {
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    max-height: 30vh;
+  }
+  
+  .product-name {
+    font-weight: bold;
+  }
+
+.text{
+    width: 350px;
+    margin-left: -12px ;
+}
+.search-result-item:hover{
+    background-color: rgb(211, 209, 209);
+    transform: scale(1.02);
+    transition: 0.5s;
+}

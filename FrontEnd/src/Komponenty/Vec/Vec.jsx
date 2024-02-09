@@ -25,8 +25,6 @@ const Vec = (props) => {
 
   };
 
-
-
   useEffect(() => {
     if (props.image && props.image.type === 'Buffer' && Array.isArray(props.image.data)) {
       const blob = new Blob([new Uint8Array(props.image.data)], { type: 'image/jpeg' });

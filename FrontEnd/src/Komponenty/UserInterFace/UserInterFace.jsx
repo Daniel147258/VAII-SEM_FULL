@@ -112,10 +112,22 @@ const UserInterFace = () => {
                     </button>
                 </div>
                 {loggedInUser.admin === 1 && (
+                  <div>
                     <div className='text-end'>
                         <Link className='addlink' to="/pridajProdukt">
                           <button className='butonas'>Pridať produkt</button>
                         </Link>
+                    </div>
+                    <div className='text-end'>
+                      <Link className='addlink' to="/upravProdukt">
+                            <button className='butonas'>Upraviť produkt</button>
+                      </Link>
+                      </div>
+                      <div className='text-end'>
+                      <Link className='addlink' to="/vymazProdukt">
+                            <button className='butonas'>Vymazať produkt</button>
+                      </Link>
+                      </div>
                     </div>
                     )}
                 </div>

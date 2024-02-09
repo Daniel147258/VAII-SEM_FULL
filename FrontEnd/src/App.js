@@ -15,6 +15,7 @@ import Registracia from './Komponenty/Registracia/Registracia';
 import UserInterFace from './Komponenty/UserInterFace/UserInterFace';
 import ZmenaHesla from './Komponenty/ZmenaHesla/ZmenaHesla';
 import PridajProduktLook from './Komponenty/PridajProduktLook/PridajProdukt';
+import UpravProdukt from './Komponenty/UpravProdukt/UpravProdukt';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
             <Route path='/pouzivatel' element={<UserInterFace></UserInterFace>}></Route>
             <Route path='/zmenaHesla' element={<ZmenaHesla></ZmenaHesla>}></Route>
             <Route path='/pridajProdukt' element={<PridajProduktLook></PridajProduktLook>}></Route>
+            <Route path='/upravProdukt' element={<UpravProdukt></UpravProdukt>}></Route>
           </Routes>
       </BrowserRouter>
     </div>

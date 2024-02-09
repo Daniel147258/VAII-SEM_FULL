@@ -149,6 +149,8 @@ const getProdukty = () => {
   });
 };
 
+
+
 module.exports = {
   getPohlavie,
   getPouzivatel,
