@@ -54,7 +54,8 @@ const SimpleSlider = ({ veci, pocet }) => {
                   <Vec
                     id={vec.id}
                     name={vec.name}
-                    category={vec.category}
+                    pohlavie={vec.pohlavie}
+                    kategoria={vec.kategoria}
                     image={vec.image}
                     new_price={vec.new_price}
                     old_price={vec.old_price}

@@ -4,21 +4,78 @@ import { Kontext } from '../../Kontext/Kontext';
 import Vec from '../Vec/Vec';
 import FiltreSideBar from '../FiltreSideBar/FiltreSideBar';
 import Footer from '../Footer/Footer';
-const Nakupovanie = (props) => {
+import { useParams } from 'react-router';
+import axios from 'axios';
+
+const Nakupovanie = () => {
   const { all_product } = useContext(Kontext);
   const [pocetNajdenychProduktov, nastavPocetNajdenychProduktov] = useState(0);
-
-  useEffect(() => {
-    let pocet = 0;
-
-    all_product.forEach((vec) => {
-      if (props.category === vec.category) {
-        pocet++;
+  const { pohlavie, kategoria, subKategoria } = useParams();
+  const [vysortovaneProdukty, setVysortovaneProdukty] = useState([]);
+  const [druheProdukty, setDruheProdukty] = useState([]);
+  
+  // Vysortovanie produktov podla zadanych parametrov
+    useEffect(() => {
+      if(pohlavie && kategoria){
+        axios.get('http://localhost:3008/api/getProduktyPohlavieKategoria' , {
+            params: {
+              pohlavie: pohlavie,
+              kategoria: kategoria
+            }
+            })
+            .then(response => {
+              setVysortovaneProdukty(response.data)
+            })
+            .catch(error => {
+                console.error('Error fetching categries:', error);
+          });
+      } 
+      else if(!pohlavie && kategoria){
+          axios.get('http://localhost:3008/api/getProduktyKategoria' , {
+            params: {
+              kategoria: kategoria
+            }
+            })
+            .then(response => {
+              setVysortovaneProdukty(response.data)
+            })
+            .catch(error => {
+                console.error('Error fetching categries:', error);
+          });
       }
-    });
+      else if(pohlavie && !kategoria){
+        axios.get('http://localhost:3008/api/getProduktyPohlavie' , {
+          params: {
+            pohlavie: pohlavie
+          }
+          })
+          .then(response => {
+            setVysortovaneProdukty(response.data)
+          })
+          .catch(error => {
+              console.error('Error fetching categries:', error);
+        });
+      }
+      
+      const filteredProducts = all_product.filter(vec => {
+        if(pohlavie && kategoria) {
+          return vec.pohlavie === pohlavie && vec.kategoria === kategoria;
+        } 
+        else if(pohlavie && !kategoria) {
+          return vec.pohlavie === pohlavie;
+        } 
+        else if(!pohlavie && kategoria) {
+          return vec.kategoria === kategoria;
+        }
+      });
 
-    nastavPocetNajdenychProduktov(pocet);
-  }, [all_product, props.category]);
+      const pocetPoloziek = vysortovaneProdukty.map((produkt, i) => i).length;
+
+      setDruheProdukty(filteredProducts);
+      nastavPocetNajdenychProduktov(filteredProducts.length + pocetPoloziek);
+    },[pohlavie, kategoria]);
+    
+
 
   return (
     <div>
@@ -38,15 +95,15 @@ const Nakupovanie = (props) => {
           <div>Triedene podľa</div>
 
           <div className="row">
-            {all_product.map((vec, i) => {
-              if (props.category === vec.category) {
+            {druheProdukty.map((vec, i) => {
                 return (
                   <div key={i} className="col-lg-4 col-md-6 col-sm-6" >
                     <div className='productDisplay'>
                       <Vec
                         key={i}
                         id={vec.id}
-                        category={vec.category}
+                        pohlavie={vec.pohlavie}
+                        kategoria={vec.kategoria}
                         name={vec.name}
                         image={vec.image}
                         new_price={vec.new_price}
@@ -55,8 +112,24 @@ const Nakupovanie = (props) => {
                     </div>
                   </div>
                 );
-              }
-              return null;
+            })}
+            {vysortovaneProdukty.map((vec, i) => {
+                return (
+                  <div key={i} className="col-lg-4 col-md-6 col-sm-6" >
+                    <div className='productDisplay'>
+                      <Vec
+                        key={i}
+                        id={vec.id}
+                        pohlavie={vec.pohlavie}
+                        kategoria={vec.kategoria}
+                        name={vec.nazov}
+                        image={vec.obrazok}
+                        new_price={vec.cena}
+                        old_price={vec.cena}
+                      />
+                    </div>
+                  </div>
+                );
             })}
             {pocetNajdenychProduktov === 0 && (
               <div className="text-center" style={{ marginTop: '150px', height: '100vh' }}>

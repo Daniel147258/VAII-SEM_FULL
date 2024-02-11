@@ -123,11 +123,7 @@ const UserInterFace = () => {
                             <button className='butonas'>Upraviť produkt</button>
                       </Link>
                       </div>
-                      <div className='text-end'>
-                      <Link className='addlink' to="/vymazProdukt">
-                            <button className='butonas'>Vymazať produkt</button>
-                      </Link>
-                      </div>
+                      
                     </div>
                     )}
                 </div>

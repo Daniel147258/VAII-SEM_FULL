@@ -2,13 +2,15 @@ import React,{ useContext } from 'react'
 import SimpleSlider from '../SimpleSlider/SimpleSlider';
 import { Kontext } from '../../Kontext/Kontext';
 import Vec from '../Vec/Vec';
+
 const RelevantProducts = ({ produkt, pocet }) => {
     const { all_product } = useContext(Kontext);
     const filteredProducts = all_product
-    .filter((vec) => produkt.category === vec.category && produkt.id !== vec.id)
+    .filter((vec) => produkt.pohlavie === vec.pohlavie && produkt.id !== vec.id)
     .map((vec) => ({
       id: vec.id,
-      category: vec.category,
+      pohlavie: vec.pohlavie,
+      kategoria: vec.kategoria,
       name: vec.name,
       image: vec.image,
       new_price: vec.new_price,

@@ -217,4 +217,35 @@ app.post('/api/vymazProdukt', async (req, res) => {
   }
 });
 
+app.get('/api/getProduktyPohlavieKategoria', async (req, res) => {
+  try {
+    const { pohlavie, kategoria } = req.query;
+    const produkt = await database.getProduktyPohlavieKategoria(pohlavie, kategoria); 
+    res.json(produkt);
+  } catch (error) {
+    console.error('Chyba pri dostavani produktov:', error);
+    res.status(500).send('Chyba pri dostavani produktov');
+  }
+});
 
+app.get('/api/getProduktyKategoria', async (req, res) => {
+  try {
+    const { kategoria } = req.query;
+    const produkt = await database.getProduktyKategoria(kategoria); 
+    res.json(produkt);
+  } catch (error) {
+    console.error('Chyba pri dostavani produktov:', error);
+    res.status(500).send('Chyba pri dostavani produktov');
+  }
+});
+
+app.get('/api/getProduktyPohlavie', async (req, res) => {
+  try {
+    const { pohlavie } = req.query;
+    const produkt = await database.getProduktyPohlavie(pohlavie); 
+    res.json(produkt);
+  } catch (error) {
+    console.error('Chyba pri dostavani produktov:', error);
+    res.status(500).send('Chyba pri dostavani produktov');
+  }
+});

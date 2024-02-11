@@ -69,5 +69,11 @@
     cursor: pointer;
     color: black;
 }
+.lop{
+    color: grey;
+}
+.lop:hover{
+    color: black;
+}
 
 

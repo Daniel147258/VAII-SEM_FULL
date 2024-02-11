@@ -1,16 +1,15 @@
 import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useBreadcrumb } from '../../Kontext/BreadcrumbContext';
-import './Breadcrumb.css'
+import './Breadcrumb.css';
+
 const Breadcrumb = (props) => {
   
   const { addBreadcrumb, breadcrumbs, clearBreadcrumbs } = useBreadcrumb();
-
   const location = useLocation();
-
+  
   useEffect(() => {
-    const pathParts = location.pathname.split('/').filter(Boolean);
-
+    const pathParts = location.pathname.split('/').filter(Boolean).map(part => decodeURIComponent(part));
     clearBreadcrumbs(); 
     let fullPath = '';
     pathParts.forEach((part, index) => {

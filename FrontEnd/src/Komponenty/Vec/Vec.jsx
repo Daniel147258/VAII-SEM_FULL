@@ -45,7 +45,7 @@ const Vec = (props) => {
               </button>
             </div>
           )}
-          <Link to={`/${props.category}/${props.id}`}>
+          <Link to={`/${props.pohlavie}/${props.kategoria}/${props.id}`}>
             {imageUrl && (<img className="img-fluid" src={imageUrl} id='hlavny' alt='hlavny' />)}
             {imageUrl === null && (<img className="img-fluid" src={props.image} id='hlavny' alt='hlavny' />)}
           </Link>

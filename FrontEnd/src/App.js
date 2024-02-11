@@ -27,10 +27,10 @@ function App() {
           <Menu/>
           <Routes>   
             <Route path='/' element={<Uvodna/>}></Route>
-            <Route path='/women' element={<Kategoria category="women" />}></Route>
-            <Route path='/men' element={<Kategoria category="men"/>}></Route>
-            <Route path='/kid' element={<Kategoria category="kid"/>}></Route>
-            <Route path=":category/:productId" element={<Produkt/>}></Route>
+            <Route path='/:pohlavie' element={<Kategoria/>}></Route>
+            <Route path='/0/:kategoria' element={<Kategoria/>}></Route>
+            <Route path='/:pohlavie/:kategoria' element={<Kategoria/>}></Route>
+            <Route path='/:pohlavie/:kategoria/:productId' element={<Produkt/>}></Route>
             <Route path='/zoznamOblubenych' element={<ZoznamOblubenych/>}></Route>
             <Route path='/login' element={<Login />}></Route>
             <Route path='/nakup' element={<Nakup></Nakup>}/>

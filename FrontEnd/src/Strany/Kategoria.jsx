@@ -5,7 +5,7 @@ const Kategoria = (props) => {
   return (
     <div>
       <InfoBar/>
-      <Nakupovanie {...props}/>
+      <Nakupovanie />
     </div>
   )
 }

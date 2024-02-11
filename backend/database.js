@@ -215,6 +215,45 @@ const vymazProdukt = (idProduktu) => {
   });
 };
 
+const getProduktyPohlavieKategoria = (pohlavie, kategoria) => {
+  return new Promise((resolve, reject) =>{
+    const sqlQuery = "SELECT * FROM produkt where pohlavie = ? and kategoria = ?";
+    connection.query(sqlQuery,[pohlavie,kategoria ], (error, results) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(results);
+      }
+    });
+  });
+};
+
+const getProduktyKategoria = (kategoria) => {
+  return new Promise((resolve, reject) =>{
+    const sqlQuery = "SELECT * FROM produkt where  kategoria = ?";
+    connection.query(sqlQuery,[kategoria ], (error, results) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(results);
+      }
+    });
+  });
+};
+
+const getProduktyPohlavie = (pohlavie) => {
+  return new Promise((resolve, reject) =>{
+    const sqlQuery = "SELECT * FROM produkt where pohlavie = ?";
+    connection.query(sqlQuery,[pohlavie ], (error, results) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(results);
+      }
+    });
+  });
+};
+
 module.exports = {
   getPohlavie,
   getPouzivatel,
@@ -232,4 +271,7 @@ module.exports = {
   zmenCenuProduktu,
   zmenNazovProduktu,
   vymazProdukt,
+  getProduktyPohlavieKategoria,
+  getProduktyKategoria,
+  getProduktyPohlavie,
 };

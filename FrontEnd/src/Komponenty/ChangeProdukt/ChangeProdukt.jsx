@@ -214,6 +214,7 @@ const ChangeProdukt = () => {
                             <Col xs={7} >
                                 <p><strong>Názov produktu: </strong>{vec.nazov}</p>
                                 <p><strong>ID produktu: </strong>{vec.id}</p>
+                                <p><strong>Pohlavie: </strong>{vec.pohlavie}</p>
                                 <p><strong>Kategória produktu: </strong>{vec.kategoria}</p>
                                 <p><strong>Cena produktu: </strong>{vec.cena}€</p>
                             </Col>
