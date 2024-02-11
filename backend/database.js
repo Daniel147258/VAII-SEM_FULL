@@ -149,7 +149,71 @@ const getProdukty = () => {
   });
 };
 
+const getProdutkyFiltrovane = (filter) => {
+  return new Promise((resolve, reject) =>{
+    const sqlQuery = "SELECT * FROM produkt where kategoria LIKE ? or id LIKE ? or nazov LIKE ?";
+    const searchTerm = `%${filter}%`; //  wildcard znaky pre vyhľadávanie podľa obsahu
+    connection.query(sqlQuery,[searchTerm,searchTerm,searchTerm], (error, results) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(results);
+      }
+    });
+  });
+};
 
+const getProdukt = (filter) => {
+  return new Promise((resolve, reject) =>{
+    const sqlQuery = "SELECT * FROM produkt where id = ?";
+    connection.query(sqlQuery,[filter], (error, results) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(results);
+      }
+    });
+  });
+};
+
+const zmenCenuProduktu = (idProduktu, novaCena) => {
+  return new Promise((resolve, reject) =>{
+    const sqlQuery = "Update produkt set cena = ? where id = ? ";
+    connection.query(sqlQuery,[novaCena, idProduktu], (error, results) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(results);
+      }
+    });
+  });
+};
+
+const zmenNazovProduktu = (idProduktu, novyNazov) => {
+  return new Promise((resolve, reject) =>{
+    const sqlQuery = "Update produkt set nazov = ? where id = ? ";
+    connection.query(sqlQuery,[novyNazov, idProduktu], (error, results) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(results);
+      }
+    });
+  });
+};
+
+const vymazProdukt = (idProduktu) => {
+  return new Promise((resolve, reject) =>{
+    const sqlQuery = "Delete from produkt where id = ?";
+    connection.query(sqlQuery,[idProduktu], (error, results) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(results);
+      }
+    });
+  });
+};
 
 module.exports = {
   getPohlavie,
@@ -163,4 +227,9 @@ module.exports = {
   getKategorie,
   pridajProdukt,
   getProdukty,
+  getProdutkyFiltrovane,
+  getProdukt,
+  zmenCenuProduktu,
+  zmenNazovProduktu,
+  vymazProdukt,
 };

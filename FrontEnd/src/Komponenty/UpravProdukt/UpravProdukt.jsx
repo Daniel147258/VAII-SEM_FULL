@@ -1,39 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import Modal from 'react-modal';
 import { useUser } from '../../Kontext/User';
 import { Link } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
 import axios from 'axios';
-import { Container, Row, Col, Form, FormGroup } from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import './UpravProdukt.css'
-// Styl pre modalne okna
-const customStyles = {
-    overlay: {
-      backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    },
-    content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
-      padding: '20px',
-      borderRadius: '8px',
-    },
-};
+
 
 const UpravProdukt = () => {
     const { loggedInUser, logoutUser } = useUser();
     const [text, setText] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [displayedProducts, setDisplayedProducts] = useState(2);
+    const [previosuLength, setPreviosuLength] = useState(0);
 
     useEffect(() => {
         if(text.length > 0){
-        axios.get('http://localhost:3008/api/getProdukty' , {
+        axios.get('http://localhost:3008/api/getProduktyFiltrovane' , {
             params: {
-                searchTerm: text
+                text: text
             }
         })
         .then(response => {
@@ -48,12 +34,22 @@ const UpravProdukt = () => {
 
     const handleSearchChange = (e) => {
         setText(e.target.value);
+        if(previosuLength === 0){
+          setPreviosuLength(searchResults.length);
+        }
+        if(searchResults.length < previosuLength){
+          setDisplayedProducts(2);
+        }
     };
 
     const handleCloseModal = () => {
         setIsModalOpen(false);
     };
     
+    const handleLoadMore = () => {
+        setDisplayedProducts(displayedProducts + 2);
+    };
+
     if (!loggedInUser || loggedInUser.admin !== 1) {
         return <Navigate to='/' />;
     }
@@ -72,28 +68,35 @@ const UpravProdukt = () => {
         />
         <div className="search-results">
           {searchResults.length > 0 ? (
-            searchResults.map(product => (
-              <Row key={product.id} className="search-result-item">
-                <Col xs={3}>
-                  {product.obrazok && (
-                    <img style={{ maxHeight: '26vh'}} src={URL.createObjectURL(new Blob([new Uint8Array(product.obrazok.data)], 
-                        { type: 'image/jpeg' }))} alt="" className="img-fluid"/>
-                  )}
-                </Col>
-                    <Col xs={9}>
-                        <div className="d-flex align-items-center">
-                            <p className="mx-2"><strong>ID:</strong> {product.id}</p>
-                            <p className="mx-2"><strong>Názov:</strong> {product.nazov}</p>
-                            <p className="mx-2"><strong>Kategória:</strong> {product.kategoria}</p>
-                        </div>
-                        {/* Ďalšie informácie o produkte */}
-                    </Col>
-              </Row>
+             searchResults.slice(0, displayedProducts).map(product => (
+              <Link to={`/upravProdukt/${product.id}`} style={{textDecoration: 'none', color: 'black'}} >
+                <Row className="search-result-item">
+                  <Col xs={3}>
+                    {product.obrazok && (
+                      <img style={{ maxHeight: '26vh'}} src={URL.createObjectURL(new Blob([new Uint8Array(product.obrazok.data)], 
+                          { type: 'image/jpeg' }))} alt="" className="img-fluid"/>
+                    )}
+                  </Col>
+                      <Col xs={9}>
+                          <div className="d-flex align-items-center">
+                              <p className="mx-2" alt="a"><strong style={{textDecoration: 'none'}}>ID:</strong> {product.id}</p>
+                              <p className="mx-2"><strong>Názov:</strong> {product.nazov}</p>
+                              <p className="mx-2"><strong>Kategória:</strong> {product.kategoria}</p>
+                              <p className="mx-2"><strong>Cena:</strong> {product.cena}€</p>
+                          </div>
+                          {/* Ďalšie informácie o produkte */}
+                      </Col>
+                </Row>
+              </Link>
             ))
           ) : (
             <p>Nenašli sa žiadne výsledky</p>
           )}
         </div>
+        {searchResults.length > displayedProducts && (
+                <Button 
+                onClick={handleLoadMore} className="my-3" id="ShowMore">Načítať ďalšie</Button>
+            )}
       </Container>
       </div>
       </div>

@@ -1,8 +1,7 @@
 .search-results {
     margin-top: 10px;
-    
   }
-  
+ 
   .search-result-item {
     background-color: #f4f4f4;
     border: 1px solid #ccc;
@@ -21,7 +20,17 @@
     margin-left: -12px ;
 }
 .search-result-item:hover{
-    background-color: rgb(211, 209, 209);
     transform: scale(1.02);
     transition: 0.5s;
+    border: 5px;
+}
+#ShowMore{
+  background-color: black;
+  color: white;
+  border-color: black;
+}
+#ShowMore:hover {
+  background-color: rgb(234, 233, 233);
+  color: black;
+  font-weight: bold;
 }

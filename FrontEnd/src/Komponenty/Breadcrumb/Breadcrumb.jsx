@@ -30,7 +30,7 @@ const Breadcrumb = (props) => {
       {breadcrumbs.map((path, index) => (
         <span key={index}>
           <Link to={path} id='link' onClick={() => handleBreadcrumbClick(index)}>
-            {path.split('/').pop()} {/* Display the last part of the path */}
+            {path.split('/').pop()} 
           </Link>
           {index < breadcrumbs.length - 1 && ' > '}
         </span>

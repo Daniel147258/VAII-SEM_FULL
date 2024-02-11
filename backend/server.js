@@ -161,3 +161,60 @@ app.get('/api/getProdukty', async (req, res) => {
     res.status(500).send('Chyba pri dostavani produktov');
   }
 });
+
+app.get('/api/getProduktyFiltrovane', async (req, res) => {
+  try {
+    const { text } = req.query; // Získame parameter 'filter' z query reťazca v URL adrese
+    const produkty = await database.getProdutkyFiltrovane(text); 
+    res.json(produkty);
+  } catch (error) {
+    console.error('Chyba pri dostavani produktov:', error);
+    res.status(500).send('Chyba pri dostavani produktov');
+  }
+});
+
+app.get('/api/getProdukt', async (req, res) => {
+  try {
+    const { pisd } = req.query;
+    const produkt = await database.getProdukt(pisd); 
+    res.json(produkt);
+  } catch (error) {
+    console.error('Chyba pri dostavani produktov:', error);
+    res.status(500).send('Chyba pri dostavani produktov');
+  }
+});
+
+app.post('/api/zmenCenuProduktu', async (req, res) => {
+  const { id, prize } = req.body; 
+  try {
+    const result = await database.zmenCenuProduktu(id, prize);
+    res.json({ success: true });
+  } catch (error) {
+    console.error('Nieco sa pokazilo pri zmene', error);
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+app.post('/api/zmenNazovProduktu', async (req, res) => {
+  const { id, nazov } = req.body;
+  try {
+    const result = await database.zmenNazovProduktu(id, nazov);
+    res.json({ success: true });
+  } catch (error) {
+    console.error('Nieco sa pokazilo pri zmene', error);
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+app.post('/api/vymazProdukt', async (req, res) => {
+  const { id } = req.body;
+  try {
+    const result = await database.vymazProdukt(id);
+    res.json({ success: true });
+  } catch (error) {
+    console.error('Nieco sa pokazilo pri zmene', error);
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+
